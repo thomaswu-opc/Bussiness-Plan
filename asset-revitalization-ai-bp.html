@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>资产盘活领域五位一体AI智慧化平台</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Chosen Palette: Slate (Neutrals) and Teal (Accents for technology/data) -->
+    <!-- Application Structure Plan: 
+         Designed a tabbed, SPA interface to break down the dense technical report into three digestible pillars based on the source structure: 1. Business Empowerment (Process flow), 2. AI & Tech Application (Interactive dashboard with charts), 3. Data Governance (Structured hierarchy). 
+         Why: This allows users to focus on one architectural layer at a time. The left sidebar provides constant context, while the main content area dynamically updates, preventing cognitive overload and mimicking a modern enterprise software dashboard. 
+    -->
+    <!-- Visualization & Content Choices: 
+         - Section 1 (Business): Goal: Explain process. Viz: CSS-based timeline flow. Interaction: Click stages for details (specifically highlighting 3D scanning and structural monitoring in 'Survey'). Justification: Clear step-by-step logic.
+         - Section 2 (Tech): Goal: Show data application. Viz: Chart.js Line chart (Sensing Data comparison) & Radar chart (Simulation). Interaction: Hover tooltips. Justification: Translates abstract concepts ("Hard/Soft sensing", "Simulation") into concrete visual data representations. No SVG used.
+         - Section 3 (Governance): Goal: Explain architecture. Viz: HTML/CSS layered grid (Pyramid concept). Interaction: Hover effects on blocks. Justification: Shows structural relationship of governance concepts clearly. No SVG/Mermaid.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <style>
+        /* Base styles and utilities */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc; /* slate-50 */
+            color: #1e293b; /* slate-800 */
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease-in-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Nav Item active state */
+        .nav-item.active {
+            background-color: #e2e8f0; /* slate-200 */
+            border-left: 4px solid #0d9488; /* teal-600 */
+            font-weight: 600;
+        }
+
+        /* Chart Container Requirements */
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 100%; /* Adapts to grid cell */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+
+        /* Custom CSS Timeline without SVG */
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            margin-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        
+        .timeline-line {
+            position: absolute;
+            top: 1.5rem;
+            left: 5%;
+            right: 5%;
+            height: 4px;
+            background-color: #cbd5e1; /* slate-300 */
+            z-index: 0;
+        }
+
+        .timeline-step {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+            width: 18%;
+        }
+
+        .timeline-circle {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            background-color: white;
+            border: 4px solid #0d9488;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: #0d9488;
+            transition: all 0.3s;
+        }
+
+        .timeline-step:hover .timeline-circle, .timeline-step.active .timeline-circle {
+            background-color: #0d9488;
+            color: white;
+            box-shadow: 0 4px 6px -1px rgba(13, 148, 136, 0.4);
+        }
+
+        .step-label {
+            margin-top: 0.75rem;
+            font-weight: 600;
+            text-align: center;
+            color: #334155;
+        }
+
+        /* Decorative dots (instead of icons) */
+        .dot-icon::before {
+            content: "\25A0"; /* Unicode square */
+            color: #0d9488;
+            margin-right: 0.5rem;
+            font-size: 0.8em;
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-64 bg-white border-r border-slate-200 flex flex-col flex-shrink-0 shadow-sm z-10">
+        <div class="p-6 border-b border-slate-100">
+            <h1 class="text-xl font-bold text-slate-800 leading-tight">
+                <span class="text-teal-600">&#9632;</span> 资产盘活<br>AI智慧化平台
+            </h1>
+            <p class="text-xs text-slate-500 mt-2">系统架构与业务蓝图解析</p>
+        </div>
+        <nav class="flex-1 overflow-y-auto py-4">
+            <ul class="space-y-1">
+                <li>
+                    <button class="nav-item active w-full text-left px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 transition-colors focus:outline-none" data-target="section-business">
+                        1. 业务赋能先行
+                    </button>
+                </li>
+                <li>
+                    <button class="nav-item w-full text-left px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 transition-colors focus:outline-none" data-target="section-ai">
+                        2. 数据驱动与AI应用
+                    </button>
+                </li>
+                <li>
+                    <button class="nav-item w-full text-left px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 transition-colors focus:outline-none" data-target="section-governance">
+                        3. 平台支撑与治理
+                    </button>
+                </li>
+                <li>
+                    <button class="nav-item w-full text-left px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 transition-colors focus:outline-none" data-target="section-plan">
+                        4. 实施计划与安排
+                    </button>
+                </li>
+                <li>
+                    <button class="nav-item w-full text-left px-6 py-3 text-sm text-slate-600 hover:bg-slate-50 transition-colors focus:outline-none" data-target="collab-plan">
+                        5. 合作模式
+                    </button>
+                </li>
+            </ul>
+        </nav>
+        <div class="p-4 border-t border-slate-100 text-xs text-slate-400 text-center">
+            吴宗谚 X 达人建设
+        </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto bg-slate-50 p-8">
+        
+        <!-- Section 1: Business Empowerment -->
+        <section id="section-business" class="tab-content active max-w-5xl mx-auto">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">业务赋能先行</h2>
+                <p class="text-slate-600 text-lg">打造资产盘活领域五位一体的AI智慧化平台。</p>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 mb-8">
+                <p class="mb-4 text-slate-700">AI智慧化平台开发从业务单点切入，构建小规模底座，最终形成标准业务数据链条的核心逻辑。通过统一平台化管理，实现数据自动入库，促进跨部门协同，彻底打破数据孤岛。</p>
+                
+                <h3 class="text-xl font-semibold text-slate-800 mb-6 border-b pb-2">既有资产改造·盘活五大阶段</h3>
+                
+                <!-- Interactive Timeline -->
+                <div class="timeline-container">
+                    <div class="timeline-line"></div>
+                    
+                    <div class="timeline-step active" onclick="showStepDetails('step1', this)">
+                        <div class="timeline-circle">1</div>
+                        <div class="step-label">调研</div>
+                    </div>
+                    <div class="timeline-step" onclick="showStepDetails('step2', this)">
+                        <div class="timeline-circle">2</div>
+                        <div class="step-label">方案</div>
+                    </div>
+                    <div class="timeline-step" onclick="showStepDetails('step3', this)">
+                        <div class="timeline-circle">3</div>
+                        <div class="step-label">设计</div>
+                    </div>
+                    <div class="timeline-step" onclick="showStepDetails('step4', this)">
+                        <div class="timeline-circle">4</div>
+                        <div class="step-label">施工</div>
+                    </div>
+                    <div class="timeline-step" onclick="showStepDetails('step5', this)">
+                        <div class="timeline-circle">5</div>
+                        <div class="step-label">运营</div>
+                    </div>
+                </div>
+
+                <!-- Dynamic Content Box for Timeline -->
+                <div id="step-details-box" class="mt-8 p-6 bg-teal-50 border border-teal-100 rounded-lg">
+                    <h4 id="step-title" class="font-bold text-teal-800 text-lg mb-2">第一阶段：调研阶段</h4>
+                    <div id="step-content" class="text-teal-900 text-sm space-y-2">
+                        <p><strong>核心动作：</strong> 现场调研、测绘及数据采集，资产包数据清洗与业务基础数据入库。</p>
+                        <ul class="list-disc pl-5 mt-2 space-y-1">
+                            <li>采用高级 <strong>三维激光扫描</strong> 技术进行高精度测绘。</li>
+                            <li>引入 <strong>结构健康监测</strong> 应用与探索，在调研初期精准评估改造可行性。</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-3 dot-icon">数据链条化</h4>
+                    <p class="text-sm text-slate-600">从业务单点需求切入，不盲目追求大而全，先建立小规模数据底座，逐步串联形成标准业务数据链条。</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h4 class="font-bold text-slate-800 mb-3 dot-icon">跨部门协同</h4>
+                    <p class="text-sm text-slate-600">数据统一平台化管理，前端数据自动入库，各阶段人员基于同一数据源工作，避免传统模式下的数据孤岛。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: AI & Data Driven -->
+        <section id="section-ai" class="tab-content max-w-5xl mx-auto">
+            <div class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">数据驱动业务赋能</h2>
+                <p class="text-slate-600 text-lg">AI 智能体工程应用方案及数字孪生系统。</p>
+            </div>
+            
+            <p class="mb-6 text-slate-700 bg-white p-4 rounded border-l-4 border-teal-500 shadow-sm">
+                此部分展示系统如何利用感知数据（软/硬感知）、BIM模型及算法模型，辅助运营决策、进行虚拟建造及市场推演。
+            </p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+                
+                <!-- Card 1: Perception System Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-1">全量“感知”系统</h3>
+                    <p class="text-xs text-slate-500 mb-4">软感知 (APP/爬虫/日志) vs 硬感知 (条码/监控/客流识别)</p>
+                    <div class="chart-container">
+                        <canvas id="perceptionChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-sm text-slate-600 border-t pt-2">
+                        <strong>辅助运营决策：</strong> 通过整合线上访问埋点与线下客流监控数据，形成精准的用户画像与消费趋势分析。
+                    </div>
+                </div>
+
+                <!-- Card 2: Simulation Radar Chart -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200">
+                    <h3 class="text-lg font-bold text-slate-800 mb-1">方案赋能与沙盘推演</h3>
+                    <p class="text-xs text-slate-500 mb-4">运营策略模拟与市场案例特征对比</p>
+                    <div class="chart-container">
+                        <canvas id="simulationChart"></canvas>
+                    </div>
+                    <div class="mt-4 text-sm text-slate-600 border-t pt-2">
+                        <strong>动态寻优：</strong> 结合市场热点追踪，通过策略模拟沙盘在成本、效率、风险间寻找最佳平衡点。
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Full width card for BIM -->
+            <div class="bg-slate-800 text-white p-6 rounded-xl shadow-sm mb-6 relative overflow-hidden">
+                <!-- Decorative CSS background shape -->
+                <div class="absolute top-0 right-0 w-64 h-64 bg-slate-700 rounded-full mix-blend-multiply filter blur-2xl opacity-50 transform translate-x-1/2 -translate-y-1/2"></div>
+                
+                <h3 class="text-xl font-bold mb-4 relative z-10">三维可视化、虚拟建造及数字孪生</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                    <div>
+                        <h4 class="font-semibold text-teal-400 mb-2">&#9656; 基于BIM的协同管理平台建设</h4>
+                        <p class="text-sm text-slate-300 mb-2">深度为 EPC (工程总承包) 赋能。</p>
+                        <ul class="text-sm text-slate-300 space-y-1 ml-4 list-disc">
+                            <li><strong>设计质量管理：</strong> 碰撞检查，减少返工。</li>
+                            <li><strong>造价管理：</strong> 模型算量，成本精准控制。</li>
+                            <li><strong>进度管理：</strong> 4D模拟，可视化工程进度监控。</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-teal-400 mb-2">&#9656; 基于BIM的数字孪生系统建设</h4>
+                        <p class="text-sm text-slate-300 mb-2">全面为建筑运行维护 (O&M) 赋能。</p>
+                        <p class="text-sm text-slate-300">将物理空间映射至数字空间，结合前期结构健康监测数据与实时感知系统，实现资产的预测性维护和资产价值最大化。</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Section 3: Platform Governance -->
+        <section id="section-governance" class="tab-content max-w-5xl mx-auto">
+             <div class="mb-8">
+                <h2 class="text-3xl font-bold text-slate-800 mb-2">业务牵引平台，平台支撑治理</h2>
+                <p class="text-slate-600 text-lg">建立企业级数据综合治理体系，让治理反哺业务。</p>
+            </div>
+
+            <p class="mb-8 text-slate-700 bg-white p-4 rounded shadow-sm border border-slate-200">
+                平台不是简单的数据堆砌，而是构建一套完善的数据架构。使数据最终成为企业的核心竞争力。以下展示九大治理基座。
+            </p>
+
+            <!-- Custom HTML Grid Layout simulating an architectural structure -->
+            <div class="flex flex-col items-center gap-4">
+                
+                <!-- Top Tier: Goal -->
+                <div class="w-full md:w-1/2 bg-teal-600 text-white p-4 rounded-lg text-center shadow-md transform hover:-translate-y-1 transition-transform">
+                    <h3 class="font-bold text-lg">i. 数据成为企业核心竞争力</h3>
+                    <p class="text-xs text-teal-100 mt-1">终极目标：治理反哺业务</p>
+                </div>
+
+                <!-- Second Tier: Capabilities -->
+                <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-white border-t-4 border-teal-500 p-4 rounded shadow-sm text-center">
+                        <span class="block text-2xl mb-2 text-teal-600">&#9673;</span>
+                        <h4 class="font-bold text-slate-800 text-sm">f. 全量感知能力</h4>
+                        <p class="text-xs text-slate-500 mt-1">打造“数字孪生”体系</p>
+                    </div>
+                    <div class="bg-white border-t-4 border-teal-500 p-4 rounded shadow-sm text-center">
+                        <span class="block text-2xl mb-2 text-teal-600">&#9673;</span>
+                        <h4 class="font-bold text-slate-800 text-sm">g. 质量综合管理能力</h4>
+                        <p class="text-xs text-slate-500 mt-1">打造“清洁数据”资产</p>
+                    </div>
+                    <div class="bg-white border-t-4 border-teal-500 p-4 rounded shadow-sm text-center">
+                        <span class="block text-2xl mb-2 text-teal-600">&#9673;</span>
+                        <h4 class="font-bold text-slate-800 text-sm">h. 可控共享能力</h4>
+                        <p class="text-xs text-slate-500 mt-1">确保“安全合规”</p>
+                    </div>
+                </div>
+
+                <!-- Third Tier: Architecture Construction -->
+                <div class="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="bg-slate-100 border border-slate-200 p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-slate-700 text-sm dot-icon">c. 信息架构建设</h4>
+                        <p class="text-xs text-slate-500 mt-1">面向“业务交易”</p>
+                    </div>
+                    <div class="bg-slate-100 border border-slate-200 p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-slate-700 text-sm dot-icon">d. 数据底座建设</h4>
+                        <p class="text-xs text-slate-500 mt-1">面向“联结共享”</p>
+                    </div>
+                    <div class="bg-slate-100 border border-slate-200 p-4 rounded shadow-sm">
+                        <h4 class="font-bold text-slate-700 text-sm dot-icon">e. 数据服务建设</h4>
+                        <p class="text-xs text-slate-500 mt-1">面向“自助消费”</p>
+                    </div>
+                </div>
+
+                <!-- Foundation Tier: Base Framework -->
+                <div class="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-slate-800 text-slate-200 p-4 rounded shadow-sm text-center">
+                        <h4 class="font-bold text-sm">a. 建立企业级数据综合治理体系</h4>
+                    </div>
+                    <div class="bg-slate-800 text-slate-200 p-4 rounded shadow-sm text-center">
+                        <h4 class="font-bold text-sm">b. 差异化的企业数据分类管理框架</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: IMPLEMENTATION PLAN (CORE FOCUS) -->
+        <section id="section-plan" class="tab-content max-w-5xl mx-auto">
+            <div class="mb-10">
+                <h2 class="text-4xl font-extrabold text-slate-800 mt-4 mb-2">试点引领，阶梯应用</h2>
+                <p class="text-slate-500">围绕试点项目构建数字底座，通过“插件式”接入实现业务全板块智能化应用。</p>
+            </div>
+
+            <div class="relative">
+                <div class="path-connector"></div>
+
+                <!-- Stage 1 -->
+                <div class="path-step">
+                    <div class="path-icon">01</div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">试点项目数字化普查与底座建设</h3>
+                                <p class="text-xs text-slate-400 mt-1">周期：第 1 - 5 个月</p>
+                            </div>
+                            <span class="px-2 py-1 bg-teal-600 text-white text-[10px] rounded">关键起步阶段</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-sm font-bold text-slate-700 mb-2 dot-icon">数据湖小规模底座建设</h4>
+                                <ul class="text-xs text-slate-500 space-y-1">
+                                    <li>• <strong>数据湖数据处理架构</strong>：从BI到AI的数据基底</li>
+                                    <li>• <strong>自动化数据清洗</strong>：自动化过滤噪声，提取关键数据</li>
+                                </ul>
+                            </div>
+                            <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+                                <h4 class="text-sm font-bold text-slate-700 mb-2 dot-icon">数据链条打通</h4>
+                                <ul class="text-xs text-slate-500 space-y-1">
+                                    <li>• 资产包数据清洗与业务基础数据入库</li>
+                                    <li>• 建立试点项目标准业务数据链条</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="path-step">
+                    <div class="path-icon">02</div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+                        <div class="flex justify-between items-start mb-4">
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-800">各业务板块智能化应用接入</h3>
+                                <p class="text-xs text-slate-400 mt-1">周期：第 5 - 8 个月</p>
+                            </div>
+                            <span class="px-2 py-1 bg-indigo-600 text-white text-[10px] rounded">业务爆发阶段</span>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-xl">
+                                <h4 class="font-bold text-indigo-900 text-sm mb-2">方案与设计板块智能化</h4>
+                                <p class="text-xs text-indigo-700 mb-3">基于底座进行<strong>运营策略模拟沙盘</strong>推演及BIM三维可视化协同。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-white text-[10px] text-indigo-500 rounded border">案例分析热点追踪</span>
+                                    <span class="px-2 py-1 bg-white text-[10px] text-indigo-500 rounded border">EPC质量/造价管理赋能</span>
+                                </div>
+                            </div>
+
+                            <div class="p-4 bg-teal-50 border border-teal-100 rounded-xl">
+                                <h4 class="font-bold text-teal-900 text-sm mb-2">建造与感知系统建设</h4>
+                                <p class="text-xs text-teal-700 mb-3">上线基于BIM的数字孪生系统，接入全量感知IOT设备。</p>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-2 py-1 bg-white text-[10px] text-teal-500 rounded border">视频监控客流识别</span>
+                                    <span class="px-2 py-1 bg-white text-[10px] text-teal-500 rounded border">软感知(APP埋点/爬虫)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="path-step">
+                    <div class="path-icon">03</div>
+                    <div class="bg-slate-800 p-8 rounded-2xl border border-slate-700 shadow-xl text-white">
+                        <div class="flex justify-between items-start mb-6">
+                            <div>
+                                <h3 class="text-xl font-bold">全量推广与治理反哺</h3>
+                                <p class="text-xs text-slate-400 mt-1">周期：第 12 个月及以后</p>
+                            </div>
+                            <span class="px-2 py-1 bg-teal-500 text-white text-[10px] rounded font-bold">价值闭环</span>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                            <div class="border-l border-slate-700 pl-4">
+                                <h5 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2">数据底座下沉</h5>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">建立企业级综合治理体系，实现面向“联结共享”的标准化支撑。</p>
+                            </div>
+                            <div class="border-l border-slate-700 pl-4">
+                                <h5 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2">决策反哺业务</h5>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">通过全量感知数据辅助运营决策，使数据真正成为企业核心竞争力。</p>
+                            </div>
+                            <div class="border-l border-slate-700 pl-4">
+                                <h5 class="text-xs font-bold text-teal-400 uppercase tracking-widest mb-2">服务自助消费</h5>
+                                <p class="text-[10px] text-slate-400 leading-relaxed">面向业务人员提供自助式数据服务，实现业务与技术的深度融合。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- Section 5: Collaboration Plan  -->
+<section id="collab-plan" class="tab-content max-w-5xl mx-auto">
+    <div class="mb-10">
+        <h2 class="text-4xl font-extrabold text-slate-800 mt-4 mb-2">合作模式</h2>
+        <h3 class="text-slate-500">两种合作方案：公对公技术服务 / 个人全职入职</h3>
+    </div>
+
+    <!-- 方案一：公对公合作 -->
+    <div class="path-step mb-12">
+        <div class="path-icon bg-teal-600">A</div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-slate-800">方案一：公对公 · 技术服务合作</h3>
+                <p class="text-xs text-slate-400 mt-1">开诚咨询 × 达人建设｜项目制技术服务合同</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 class="text-sm font-bold text-slate-800 mb-3">📊 人月单价（含税）</h4>
+                    <div class="text-3xl font-bold text-teal-700 mb-2">3.5 万 / 月</div>
+                    <p class="text-xs text-slate-500">含 6% 增值税 | 上海建设行业+AI信息化 市场价</p>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 class="text-sm font-bold text-slate-800 mb-3">📦 项目总包参考（含税）</h4>
+                    <div class="text-3xl font-bold text-indigo-700 mb-2">160 - 190 万</div>
+                    <p class="text-xs text-slate-500">标准周期 6-8 个月 | 含平台开发+实施+验收</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 mb-6">
+                <div class="p-4 bg-teal-50 border border-teal-100 rounded-xl">
+                    <h4 class="font-bold text-teal-900 text-sm mb-2">服务内容包含</h4>
+                    <ul class="text-xs text-slate-700 space-y-1 ml-4 list-disc">
+                        <li>资产盘活智慧化平台需求梳理、方案设计与开发落地</li>
+                        <li>业务流程数字化、数据底座建设、可视化平台开发</li>
+                        <li>AI 应用落地、BIM 集成、数字孪生模块实施</li>
+                        <li>项目管理、测试验收、上线部署与培训交付</li>
+                        <li>一年免费质保（bug 修复 + 系统维护）</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-indigo-50 border border-indigo-100 rounded-xl">
+                    <h4 class="font-bold text-indigo-900 text-sm mb-2">回款节点（行业标准）</h4>
+                    <ul class="text-xs text-slate-700 space-y-1 ml-4 list-disc">
+                        <li>合同签订：预付 30%</li>
+                        <li>需求确认 + 原型交付：25%</li>
+                        <li>核心功能上线 + 测试通过：30%</li>
+                        <li>终验合格：10%</li>
+                        <li>质保期满：5%</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-500">
+                适用场景：长期稳定合作、风险低、公司主体签约、合规性最高
+            </div>
+        </div>
+    </div>
+
+    <!-- 方案二：个人全职入职 -->
+    <div class="path-step">
+        <div class="path-icon bg-indigo-600">B</div>
+        <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+            <div class="mb-6">
+                <h3 class="text-xl font-bold text-slate-800">方案二：个人全职加入团队</h3>
+                <p class="text-xs text-slate-400 mt-1">建设行业 + AI信息化 复合型岗位｜上海</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 class="text-sm font-bold text-slate-800 mb-3">💰 月薪（税前）</h4>
+                    <div class="text-3xl font-bold text-indigo-700 mb-2">24 - 28K</div>
+                    <p class="text-xs text-slate-500">上海市场合理区间 | 不低于当前收入</p>
+                </div>
+                <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
+                    <h4 class="text-sm font-bold text-slate-800 mb-3">📈 年薪结构（税前）</h4>
+                    <div class="text-3xl font-bold text-teal-700 mb-2">33 - 40 万</div>
+                    <p class="text-xs text-slate-500">14薪～15薪 | 含绩效 + 项目奖金</p>
+                </div>
+            </div>
+
+            <div class="space-y-4 mb-6">
+                <div class="p-4 bg-slate-800 text-white rounded-xl">
+                    <h4 class="font-bold text-sm mb-3">岗位职责（核心）</h4>
+                    <ul class="text-xs space-y-1 ml-4 list-disc">
+                        <li>资产盘活平台业务梳理、需求分析与落地推进</li>
+                        <li>建设行业 + AI信息化 方案设计与跨部门协同</li>
+                        <li>数据治理、数字孪生、BIM 应用落地管理</li>
+                        <li>项目进度把控、客户沟通、成果验收对接</li>
+                        <li>校企资源协同、技术方案支撑与业务创新</li>
+                    </ul>
+                </div>
+
+                <div class="p-4 bg-teal-50 border border-teal-100 rounded-xl">
+                    <h4 class="font-bold text-teal-900 text-sm mb-2">福利与保障</h4>
+                    <ul class="text-xs text-slate-700 space-y-1 ml-4 list-disc">
+                        <li>五险一金（足额缴纳）</li>
+                        <li>带薪年假、节日福利、项目奖金</li>
+                        <li>UNNC 校企体系资源、长期稳定</li>
+                        <li>晋升空间 + 技术/业务双向发展</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="text-xs text-slate-500">
+                适用场景：追求稳定、深度参与平台建设、长期职业发展
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // --- Navigation Logic ---
+        const navItems = document.querySelectorAll('.nav-item');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                // Update active nav styling
+                navItems.forEach(nav => nav.classList.remove('active', 'text-slate-900'));
+                item.classList.add('active', 'text-slate-900');
+
+                // Show target content
+                const targetId = item.getAttribute('data-target');
+                tabContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === targetId) {
+                        content.classList.add('active');
+                        // Render charts only when tab is visible to prevent sizing issues
+                        if(targetId === 'section-ai' && !window.chartsRendered) {
+                            renderCharts();
+                            window.chartsRendered = true;
+                        }
+                    }
+                });
+            });
+        });
+
+        // --- Section 1 Interactive Logic (Timeline) ---
+        const stepData = {
+            'step1': {
+                title: '第一阶段：调研阶段',
+                content: '<p><strong>核心动作：</strong> 现场调研、测绘及数据采集，资产包数据清洗与业务基础数据入库。</p><ul class="list-disc pl-5 mt-2 space-y-1"><li><strong class="text-teal-700">数据湖</strong>存储架构与<strong class="text-teal-700">AI智能</strong>数据解析以及结构化存储，提高资产包入库效率，减少噪点。</li><li>采用高级 <strong class="text-teal-700">三维激光扫描</strong> 技术进行高精度测绘，形成点云数据。</li><li>引入 <strong class="text-teal-700">结构健康监测</strong> 应用与探索，在调研初期精准评估改造可行性。</li></ul>'
+            },
+            'step2': {
+                title: '第二阶段：方案阶段',
+                content: '<p><strong>核心动作：</strong> 基于前期数据进行方案赋能。</p><ul class="list-disc pl-5 mt-2 space-y-1"><li>执行 <strong>运营策略模拟沙盘</strong>，推演不同资产盘活路径的投入产出比。</li><li>结合 <strong>市场案例分析及热点追踪</strong>，确保方案符合市场动态需求。</li><li> 开发基于<strong>AI智能体</strong>的报告自动生成系统，根据历史数据以及选定的实施策略，自动形成投资咨询报告。</li></ul>'
+            },
+            'step3': {
+                title: '第三阶段：设计阶段',
+                content: '<p><strong>核心动作：</strong> 三维可视化设计与协同。</p><ul class="list-disc pl-5 mt-2 space-y-1"><li>基于 <strong>BIM</strong> 的协同管理平台建设，为 <strong>EPC</strong> 赋能。</li><li>重点进行 <strong>设计质量管理</strong>（碰撞检查） 及 <strong>造价管理</strong>（实物量测算）。</li></ul>'
+            },
+            'step4': {
+                title: '第四阶段：施工阶段',
+                content: '<p><strong>核心动作：</strong> 虚拟建造与进度管控。</p><ul class="list-disc pl-5 mt-2 space-y-1"><li>依托 BIM 模型进行 <strong>进度管理</strong>，实现施工过程可视化。</li><li>现场数据采集设备与模型比对，确保按图施工。</li></ul>'
+            },
+            'step5': {
+                title: '第五阶段：运营阶段',
+                content: '<p><strong>核心动作：</strong> 基于孪生的智慧运营辅助决策。</p><ul class="list-disc pl-5 mt-2 space-y-1"><li>基于 BIM 的数字孪生系统建设，全面为建筑运行维护赋能。</li><li>接入 <strong>全量感知系统</strong>（软感知：APP、日志；硬感知：监控、客流识别、条码销售分析）。</li></ul>'
+            }
+        };
+
+        function showStepDetails(stepId, element) {
+            // Update active styling
+            document.querySelectorAll('.timeline-step').forEach(el => el.classList.remove('active'));
+            element.classList.add('active');
+
+            // Update content area
+            const titleEl = document.getElementById('step-title');
+            const contentEl = document.getElementById('step-content');
+            const boxEl = document.getElementById('step-details-box');
+
+            // Simple animation effect
+            boxEl.style.opacity = '0.5';
+            setTimeout(() => {
+                titleEl.innerHTML = stepData[stepId].title;
+                contentEl.innerHTML = stepData[stepId].content;
+                boxEl.style.opacity = '1';
+                boxEl.style.transition = 'opacity 0.3s ease';
+            }, 150);
+        }
+
+        // --- Chart.js Implementations ---
+        // Global defaults for styling matching Tailwind theme
+        Chart.defaults.font.family = "'Segoe UI', sans-serif";
+        Chart.defaults.color = '#64748b'; // slate-500
+        Chart.defaults.scale.grid.color = '#f1f5f9'; // slate-100
+
+        function renderCharts() {
+            // 1. Perception System Line Chart (Hard vs Soft Data)
+            const ctxPerception = document.getElementById('perceptionChart').getContext('2d');
+            new Chart(ctxPerception, {
+                type: 'line',
+                data: {
+                    labels: ['08:00', '10:00', '12:00', '14:00', '16:00', '18:00', '20:00'],
+                    datasets: [
+                        {
+                            label: '视频客流识别 (硬感知)',
+                            data: [120, 350, 800, 600, 550, 950, 400],
+                            borderColor: '#0f766e', // teal-700
+                            backgroundColor: 'rgba(15, 118, 110, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.4,
+                            fill: true
+                        },
+                        {
+                            label: 'APP访问热度 (软感知)',
+                            data: [200, 400, 750, 650, 600, 1100, 850],
+                            borderColor: '#3b82f6', // blue-500
+                            borderWidth: 2,
+                            borderDash: [5, 5],
+                            tension: 0.4
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { position: 'bottom', labels: { boxWidth: 12 } },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                            titleFont: { size: 13 },
+                            bodyFont: { size: 12 }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: '数据量纲' } }
+                    }
+                }
+            });
+
+            // 2. Simulation Strategy Radar Chart
+            const ctxSimulation = document.getElementById('simulationChart').getContext('2d');
+            new Chart(ctxSimulation, {
+                type: 'radar',
+                data: {
+                    labels: ['改造成本控制', '工期效率', '空间利用率', '能耗预期', '商业预期收益', '结构安全冗余'],
+                    datasets: [
+                        {
+                            label: '当前设计方案',
+                            data: [80, 70, 85, 90, 75, 95],
+                            backgroundColor: 'rgba(13, 148, 136, 0.2)', // teal
+                            borderColor: '#0d9488',
+                            pointBackgroundColor: '#0d9488',
+                            pointHoverBorderColor: '#fff',
+                        },
+                        {
+                            label: '市场同类基准线',
+                            data: [65, 80, 70, 60, 85, 80],
+                            backgroundColor: 'rgba(100, 116, 139, 0.2)', // slate
+                            borderColor: '#64748b',
+                            pointBackgroundColor: '#64748b',
+                            pointHoverBorderColor: '#fff',
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    elements: { line: { borderWidth: 2 } },
+                    plugins: {
+                        legend: { position: 'bottom' }
+                    },
+                    scales: {
+                        r: {
+                            angleLines: { color: '#e2e8f0' },
+                            grid: { color: '#e2e8f0' },
+                            pointLabels: {
+                                font: { size: 11 },
+                                callback: function(label) {
+                                    // Wrap logic for long labels if needed (16 char rule concept applied simply here)
+                                    return label.length > 8 ? label.substring(0, 8) + '...' : label;
+                                }
+                            },
+                            ticks: { display: false, max: 100, min: 0 }
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
