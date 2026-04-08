@@ -134,7 +134,7 @@
 
         /* Sensitive data blur */
         .blur-data {
-            filter: blur(5px); /* 模糊像素值 */
+            filter: blur(10px); /* 模糊像素值 */
             user-select: none;  /* 禁止选中文字，防止复制泄露 */
             pointer-events: none; /* 防止鼠标交互 */
             transition: filter 0.3s ease;
@@ -557,12 +557,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
                     <h4 class="text-sm font-bold text-slate-800 mb-3">💰 月薪（税前）</h4>
-                    <div class="text-3xl font-bold text-indigo-700 mb-2">24 - 28K</div>
+                    <div class="text-3xl font-bold text-indigo-700 mb-2 blur-data">24 - 28K</div>
                     <p class="text-xs text-slate-500">上海市场合理区间 | 不低于当前收入</p>
                 </div>
                 <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
                     <h4 class="text-sm font-bold text-slate-800 mb-3">📈 年薪结构（税前）</h4>
-                    <div class="text-3xl font-bold text-teal-700 mb-2">33 - 40 万</div>
+                    <div class="text-3xl font-bold text-teal-700 mb-2 blur-data">33 - 40 万</div>
                     <p class="text-xs text-slate-500">14薪～15薪 | 含绩效 + 项目奖金</p>
                 </div>
             </div>
