@@ -131,6 +131,14 @@
             margin-right: 0.5rem;
             font-size: 0.8em;
         }
+
+        /* Sensitive data blur */
+        .blur-data {
+            filter: blur(5px); /* 模糊像素值 */
+            user-select: none;  /* 禁止选中文字，防止复制泄露 */
+            pointer-events: none; /* 防止鼠标交互 */
+            transition: filter 0.3s ease;
+        }
     </style>
 </head>
 <body class="flex h-screen overflow-hidden antialiased">
@@ -497,12 +505,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                 <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
                     <h4 class="text-sm font-bold text-slate-800 mb-3">📊 人月单价（含税）</h4>
-                    <div class="text-3xl font-bold text-teal-700 mb-2">3.5 万 / 月</div>
+                    <div class="text-3xl font-bold text-teal-700 mb-2 blur-data">3.5 万 / 月</div>
                     <p class="text-xs text-slate-500">含 6% 增值税 | 上海建设行业+AI信息化 市场价</p>
                 </div>
                 <div class="bg-slate-50 p-5 rounded-xl border border-slate-100">
                     <h4 class="text-sm font-bold text-slate-800 mb-3">📦 项目总包参考（含税）</h4>
-                    <div class="text-3xl font-bold text-indigo-700 mb-2">160 - 190 万</div>
+                    <div class="text-3xl font-bold text-indigo-700 mb-2 blur-data">160 - 190 万</div>
                     <p class="text-xs text-slate-500">标准周期 6-12 个月 | 含平台开发+实施+验收</p>
                 </div>
             </div>
