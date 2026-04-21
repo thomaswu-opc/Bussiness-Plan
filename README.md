@@ -9,6 +9,7 @@
 | :--- | :--- | :--- | :--- | :--- |
 | 2026-04-08 | **资产盘活领域五位一体智慧平台** | AI / 资产运营 | `Active` | [🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/asset-revitalization-ai-bp "吴宗谚 x 达人建设") |
 | 2026-04-21 | **CAD-IFC 图模一致性快速审查方案** | BIM / 自动化 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/cad-ifc-review-executive-brief "吴宗谚 x 开诚咨询") |
+| 2026-04-xx | **外部索引-实时热点信息捕捉方案** | 爬虫 / 自动化 | `Pending` | 请稍后 |
 
 ---
 ### 🛠 技术栈与核心能力
