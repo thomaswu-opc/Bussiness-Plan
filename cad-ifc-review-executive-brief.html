@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BIM-CDE 图模一致性快速审查方案</title>
+  <style>
+    :root {
+      --bg: #f4f1ea;
+      --paper: rgba(255, 252, 246, 0.92);
+      --ink: #1f2a30;
+      --muted: #59676d;
+      --line: rgba(31, 42, 48, 0.12);
+      --brand: #0f5c5c;
+      --brand-soft: #dce9e6;
+      --accent: #bd7a2f;
+      --accent-soft: #f5eadc;
+      --danger: #8e3d2f;
+      --shadow: 0 18px 40px rgba(36, 43, 48, 0.08);
+      --radius: 22px;
+      --content-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Noto Sans SC", "Source Han Sans SC", "Microsoft YaHei", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(189, 122, 47, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(15, 92, 92, 0.16), transparent 24%),
+        linear-gradient(180deg, #fcfaf6 0%, #f2ede5 100%);
+      line-height: 1.7;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 72px 24px 40px;
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 360px;
+      height: 360px;
+      top: -120px;
+      right: -80px;
+      background: rgba(15, 92, 92, 0.12);
+    }
+
+    .hero::after {
+      width: 280px;
+      height: 280px;
+      left: -100px;
+      bottom: -100px;
+      background: rgba(189, 122, 47, 0.12);
+    }
+
+    .hero-inner,
+    main {
+      width: min(var(--content-width), calc(100% - 32px));
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(15, 92, 92, 0.08);
+      color: var(--brand);
+      font-size: 13px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .report-meta {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 14px;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      margin: 18px 0 14px;
+      max-width: 920px;
+      font-family: "Source Han Serif SC", "Songti SC", "STSong", serif;
+      font-size: clamp(34px, 5vw, 56px);
+      line-height: 1.16;
+      letter-spacing: 0.01em;
+    }
+
+    .lead {
+      max-width: 900px;
+      font-size: 18px;
+      color: var(--muted);
+      margin: 0 0 26px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .card {
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+    }
+
+    .summary-card {
+      padding: 28px;
+    }
+
+    .summary-card h2 {
+      margin: 0 0 10px;
+      font-size: 24px;
+    }
+
+    .summary-card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .metric-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .metric {
+      padding: 18px 18px 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(247, 241, 233, 0.8));
+      border: 1px solid rgba(31, 42, 48, 0.08);
+      border-radius: 18px;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 30px;
+      color: var(--brand);
+      margin-bottom: 6px;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .pain-card {
+      padding: 28px;
+      background: linear-gradient(180deg, rgba(252, 244, 238, 0.94), rgba(255, 250, 246, 0.92));
+    }
+
+    .pain-card h3,
+    section h2 {
+      margin: 0 0 14px;
+      font-size: 24px;
+    }
+
+    .pain-points,
+    .value-list,
+    .path-list,
+    .phase-list,
+    .module-list {
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+
+    main {
+      padding: 8px 0 56px;
+    }
+
+    section {
+      margin-top: 18px;
+      padding: 28px;
+    }
+
+    .section-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .flow {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .flow-step {
+      position: relative;
+      padding: 18px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.94), rgba(245, 240, 231, 0.88));
+      border: 1px solid rgba(31, 42, 48, 0.08);
+      min-height: 168px;
+    }
+
+    .flow-step::after {
+      content: "→";
+      position: absolute;
+      top: 18px;
+      right: -11px;
+      color: var(--accent);
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+    .flow-step:last-child::after {
+      content: "";
+    }
+
+    .step-no {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .flow-step h3 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    .flow-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .highlight-box {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: linear-gradient(90deg, rgba(15, 92, 92, 0.1), rgba(189, 122, 47, 0.1));
+      border: 1px solid rgba(15, 92, 92, 0.12);
+    }
+
+    .highlight-box strong {
+      color: var(--brand);
+    }
+
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .compare-item {
+      padding: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(31, 42, 48, 0.08);
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .compare-item h3 {
+      margin: 0 0 10px;
+      font-size: 18px;
+    }
+
+    .compare-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-note {
+      margin-top: 18px;
+      padding: 24px 28px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .section-grid,
+      .flow,
+      .compare-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-step::after {
+        display: none;
+      }
+
+      .metric-strip {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-inner">
+      <span class="eyebrow">BIM-CDE · Executive Brief</span>
+      <h1>基于 AutoCAD 预处理与 CAD 语义重建的图模一致性快速审查方案</h1>
+      <p class="lead">
+        面向预留预埋、洞口与关键机电翻模场景，通过 AutoCAD 侧预处理兼容脏图、天正代理与 T3 碎线，再与 IFC 模型进行统一语义比对，帮助项目团队在施工前快速发现遗漏和偏差。
+      </p>
+
+      <div class="hero-grid">
+        <article class="card summary-card">
+          <h2>前倾提要</h2>
+          <p>
+            预留预埋信息通常分散在暖通、电气、给排水、消防等多专业图纸中，建模人员翻模时极易因图纸分散、表达不统一和人工识别负担过大而发生遗漏。一旦遗漏带入施工阶段，将直接影响土建结构、留洞留埋、机电穿插与现场进度，返工成本高、协调压力大、管理风险高。
+          </p>
+          <div class="metric-strip">
+            <div class="metric">
+              <strong>多专业</strong>
+              <span>预留预埋信息跨暖通、电气、给排水、消防分散表达</span>
+            </div>
+            <div class="metric">
+              <strong>高影响</strong>
+              <span>遗漏进入土建或安装阶段后，整改代价显著放大</span>
+            </div>
+            <div class="metric">
+              <strong>快审查</strong>
+              <span>服务 BIM 项目管理，尽早发现图模不一致问题</span>
+            </div>
+          </div>
+        </article>
+
+        <aside class="card pain-card">
+          <h3>关键痛点</h3>
+          <ul class="pain-points">
+            <li>预留预埋信息分散在不同机电图纸中，人工翻模天然容易漏。</li>
+            <li>真实 DWG 图纸不规范，存在图层混乱、块名不统一、表达方式不一致。</li>
+            <li>项目中常见天正代理图形、T3/TSSD 碎线，直接解析难以稳定提取语义。</li>
+            <li>现阶段更需要快速、可落地的审查能力，而不是高成本 DWG 商业底层方案。</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>为什么选择这条技术路径</h2>
+      <div class="section-grid">
+        <div>
+          <p>
+            面对真实工程图纸，单纯依赖 DWG 底层解析并不能稳定支撑图模审查需求。DWG 为闭源格式，商用稳定解析方案授权成本高；而真实项目图纸中大量存在不规范表达、代理对象、碎线对象与多专业差异，即使读到图元，也不等于能直接识别出墙、门、窗、洞口、设备和预埋件等业务对象。
+          </p>
+        </div>
+        <div>
+          <ul class="path-list">
+            <li>不把重点放在“低层 DWG 解析”，而放在“图纸语义重建”。</li>
+            <li>充分利用 AutoCAD 宿主环境对代理对象和复杂图纸的兼容能力。</li>
+            <li>通过中间语义模型解耦 CAD 与 IFC，提升平台可维护性与可扩展性。</li>
+            <li>优先服务 BIM 项目管理中的快速审查、差异定位与整改复审闭环。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="highlight-box">
+        <strong>建议技术路径：</strong>
+        AutoCAD 预处理 → CAD 语义重建 → BIM-CDE 入库 → IFC 语义解析 → 图模一致性审查
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>总体方案架构</h2>
+      <div class="flow">
+        <div class="flow-step">
+          <span class="step-no">01</span>
+          <h3>CAD 宿主预处理</h3>
+          <p>在 AutoCAD 侧完成图纸标准化、代理对象降级、碎线修复与构件候选识别。</p>
+        </div>
+        <div class="flow-step">
+          <span class="step-no">02</span>
+          <h3>语义重建导出</h3>
+          <p>输出增强图纸与 `cad-semantic.json`，形成可被 BIM-CDE 理解的二维语义对象集。</p>
+        </div>
+        <div class="flow-step">
+          <span class="step-no">03</span>
+          <h3>IFC 自动解析</h3>
+          <p>使用 `ifcOpenShell` 提取构件 GUID、类型、楼层、尺寸、位置与二维投影轮廓。</p>
+        </div>
+        <div class="flow-step">
+          <span class="step-no">04</span>
+          <h3>统一规则比对</h3>
+          <p>按楼层、专业、区域和构件类型，对二维图纸对象与三维模型对象进行一致性审查。</p>
+        </div>
+        <div class="flow-step">
+          <span class="step-no">05</span>
+          <h3>差异闭环管理</h3>
+          <p>输出缺失、错位、尺寸偏差、类型不一致问题，推动整改与复审。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>重点审查价值</h2>
+      <div class="compare-grid">
+        <div class="compare-item">
+          <h3>预留预埋快速排漏</h3>
+          <p>重点发现多专业图纸中已有表达、但 BIM 模型中未完整体现的预留洞口、预埋点位和关键机电关联对象。</p>
+        </div>
+        <div class="compare-item">
+          <h3>施工前前置发现</h3>
+          <p>把遗漏、错位和尺寸偏差尽量拦截在施工前，减少结构返工、机电穿插冲突与现场协调成本。</p>
+        </div>
+        <div class="compare-item">
+          <h3>项目管理可追溯</h3>
+          <p>通过图纸版本、模型版本和审查任务的统一管理，建立差异发现、整改、复审的闭环链路。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>系统可识别的主要问题类型</h2>
+      <div class="section-grid">
+        <div>
+          <ul class="value-list">
+            <li>图纸有、模型无</li>
+            <li>模型有、图纸无</li>
+            <li>位置不一致</li>
+            <li>尺寸不一致</li>
+          </ul>
+        </div>
+        <div>
+          <ul class="value-list">
+            <li>类型不匹配</li>
+            <li>楼层归属不一致</li>
+            <li>预留预埋点位遗漏</li>
+            <li>预留洞口位置偏差</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>实施节奏建议</h2>
+      <div class="section-grid">
+        <div>
+          <h3>一期：基础可用版</h3>
+          <ul class="phase-list">
+            <li>先做建筑平面图与关键预留洞口审查。</li>
+            <li>支持墙、门、窗、柱、轴网、主要预留洞口。</li>
+            <li>打通 AutoCAD 预处理输出与 BIM-CDE IFC 比对链路。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>二期：脏图兼容版</h3>
+          <ul class="phase-list">
+            <li>增强天正代理降级识别与 T3/TSSD 碎线重建。</li>
+            <li>增加规则模板、置信度分流和人工确认机制。</li>
+            <li>提升真实项目图纸适配率与审查稳定性。</li>
+          </ul>
+        </div>
+      </div>
+      <div class="section-grid" style="margin-top: 18px;">
+        <div>
+          <h3>三期：版本与闭环版</h3>
+          <ul class="phase-list">
+            <li>支持 DWG 版本语义对比。</li>
+            <li>形成问题整改、版本复审与结果追踪闭环。</li>
+            <li>联动 IFC 版本对比，提升项目经理确认效率。</li>
+          </ul>
+        </div>
+        <div>
+          <h3>四期：平台化增强版</h3>
+          <ul class="phase-list">
+            <li>扩展多专业模板库与设计院规则模板。</li>
+            <li>沉淀项目级规则学习与报表能力。</li>
+            <li>逐步形成可复用的 CAD 语义重建平台能力。</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>一句话总结</h2>
+      <p>
+        针对预留预埋信息分散、多专业图纸易漏翻、代理对象与碎线普遍存在的现实问题，本方案采用“AutoCAD 预处理 + CAD 语义重建 + IFC 自动比对”的技术路径，在 BIM-CDE 中实现图模一致性快速审查，帮助项目团队尽早发现遗漏、降低施工风险、提升 BIM 项目管理效率。
+      </p>
+    </section>
+
+    <div class="card footer-note">
+      适用对象：项目经理、BIM 负责人、数字化负责人、方案评审与汇报场景
+    </div>
+  </main>
+</body>
+</html>
