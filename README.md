@@ -1,5 +1,5 @@
-# 🚀 Business Plan Repository
-> **个人项目商业计划书（BP）存档仓库** > 致力于 BIM + AI 驱动的建筑全生命周期数字化转型。
+# 🚀 Project Plan Repository
+> **个人项目方案存档仓库** > 致力于 BIM + AI 驱动的建筑全生命周期数字化转型。
 
 ---
 
@@ -7,8 +7,9 @@
 
 | 日期 | 项目名称 | 核心领域 | 状态 | 查看链接 |
 | :--- | :--- | :--- | :--- | :--- |
-| 2026-04-08 | **资产盘活领域五位一体智慧平台** | AI / 资产运营 | `Active` | [🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/asset-revitalization-ai-bp "吴宗谚 x 达人建设") |
-| 2026-04-21 | **CAD-IFC 图模一致性快速审查方案** | BIM / 自动化 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/cad-ifc-review-executive-brief "吴宗谚 x 开诚咨询") |
+| 2026-04-08 | **资产盘活领域五位一体智慧平台** | AI / 资产运营 | `Active` | [🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/asset-revitalization-ai-bp "达人建设 x 吴宗谚") |
+| 2026-04-21 | **CAD-IFC 图模一致性快速审查方案** | BIM / 自动化 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/cad-ifc-review-executive-brief "开诚咨询 x 吴宗谚") |
+| 2026-04-25 | **企业AI本地私有云：硬件、机房与扩展规划** | AI / 硬件 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/enterprise-ai-local-deployment-three-stage-hardware-construction-plan.html "达人集团 x 吴宗谚") |
 | 2026-04-xx | **外部索引-实时热点信息捕捉方案** | 爬虫 / 自动化 | `Pending` | 请稍后 |
 
 ---
