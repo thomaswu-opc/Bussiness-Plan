@@ -1,9 +1,9 @@
-# 🚀 Project Plan Repository
-> **个人项目方案存档仓库** > 致力于 BIM + AI 驱动的建筑全生命周期数字化转型。
+# 🚀 Bussiness Plan Repository
+> **个人商业企划存档仓库** > 致力于 BIM + AI 驱动的建筑全生命周期数字化转型。
 
 ---
 
-### 📂 项目索引 | Project Index
+### 📂 项目文档索引 | Project Index
 
 | 日期 | 项目名称 | 核心领域 | 状态 | 查看链接 |
 | :--- | :--- | :--- | :--- | :--- |
