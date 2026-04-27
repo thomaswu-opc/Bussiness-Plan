@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>企业级AI本地部署P0至三阶段硬件建设方案</title>
+  <title>数字孪生智慧决策系统P0至三阶段软硬一体建设方案</title>
   <style>
     :root{
       --bg:#0b1020;--panel:#111a32;--card:#fff;--text:#eef3ff;--muted:#aeb9d6;--ink:#182033;--sub:#5e6b85;--line:#dfe5f2;--blue:#315cff;--cyan:#2cc8d5;--green:#23b26d;--orange:#ff9f1c;--red:#e94f64;--purple:#7a5cff;--shadow:0 20px 60px rgba(0,0,0,.18);--radius:22px
@@ -26,9 +26,9 @@
 <body>
   <main class="page">
     <header class="hero">
-      <div class="pill">企业级 AI 本地部署 · P0验证 + 三阶段硬件建设方案</div>
+      <div class="pill">数字孪生智慧决策系统 · P0验证 + 三阶段软硬一体建设方案</div>
       <h1>企业AI本地私有云<br/>从MVP验证到三阶段建设</h1>
-      <p class="lead">以共享办公空间数字孪生 MVP 验证“AI + 静态/动态数据 + 公网信息搜索 + 决策支持”的实际价值；若验证成功，再平滑进入阶段1、阶段2、阶段3建设。</p>
+      <p class="lead">以“钛空间”共享办公数字孪生 MVP 验证“AI + 静态/动态数据 + 公网信息搜索 + 决策支持”的实际价值；若验证成功，再平滑进入阶段1、阶段2、阶段3建设。</p>
       <div class="meta">
         <span class="pill">达人集团 x 吴宗谚</span>
         <span class="pill">汇报日期：2026.04.25</span>
@@ -37,77 +37,79 @@
       <nav class="toc" aria-label="目录">
         <a href="#summary">01 总体结论</a>
         <a href="#p0">02 P0 MVP验证</a>
-        <a href="#phases">03 P0+三阶段建设</a>
-        <a href="#procurement">04 采购清单</a>
-        <a href="#topology">05 机房拓扑</a>
-        <a href="#room">06 机房环境</a>
-        <a href="#ops">07 落地必明确</a>
+        <a href="#p0-plan">03 P0实时计划</a>
+        <a href="#phases">04 P0+三阶段建设</a>
+        <a href="#procurement">05 采购清单</a>
+        <a href="#topology">06 机房拓扑</a>
+        <a href="#room">07 机房环境</a>
+        <a href="#ops">08 落地必明确</a>
       </nav>
     </header>
 
     <section id="summary" class="section-card">
-        <h2>01｜总体结论</h2>
-        <div class="grid-3">
-          <article class="mini highlight"><span class="tag purple">P0验证</span><h3>单场景价值验证</h3><p class="muted">P0不是缩小版阶段1，而是共享办公空间数字孪生AI决策MVP。目标是验证AI是否能理解空间状态、融合公网信息，并给出可执行运营建议。</p></article>
-          <article class="mini"><span class="tag">软硬一体</span><h3>硬件只是底座，软件决定价值</h3><p class="muted">本项目不能只按GPU、服务器和机房预算评估，还必须纳入软件开发、BIM数据工程、IoT接入、Agent编排、运维安全和团队建设投入。</p></article>
-          <article class="mini"><span class="tag green">投资策略</span><h3>P0轻资产，成功后滚动扩容</h3><p class="muted">P0预算控制在5–30万硬件与物联试点投入；软件开发采用2人极简团队验证价值。若验证成功，再进入阶段1生产化建设。</p></article>
-        </div>
-      
-        <div class="grid-4" style="margin-top:16px">
-          <div class="metric p0"><b>5–30万</b><span>P0硬件、IoT试点、演示环境投入。</span></div>
-          <div class="metric"><b>182–405万</b><span>阶段1–3硬件、机房、网络追加投入。</span></div>
-          <div class="metric"><b>240–1135万</b><span>采用Vibe Coding精简后的软件开发、平台、运维和团队投入估算。</span></div>
-          <div class="metric"><b>约427–1570万</b><span>完整路径总投入估算，含P0、三阶段硬件和软件人力。</span></div>
-        </div>
-      
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>能力项</th><th>P0验证期</th><th>阶段1投产后</th><th>阶段2增强后</th><th>阶段3完整后</th></tr></thead>
-            <tbody>
-              <tr><td>企业AI问答/知识库</td><td>共享办公场景小知识库</td><td class="ok">生产可用</td><td class="ok">多Agent增强</td><td class="ok">接入开发与业务流程</td></tr>
-              <tr><td>数字孪生</td><td>平面图/轻量3D + 数据绑定</td><td>BIM轻量化、查询、看板、基础物联</td><td>设备/公开数据联动</td><td>开发团队快速扩展插件</td></tr>
-              <tr><td>公网信息搜索</td><td>搜索API/轻爬虫，低频采集</td><td>小规模定时采集与入库</td><td>独立爬虫/清洗/向量化节点</td><td>接入Agent和业务流</td></tr>
-              <tr><td>AI决策支持</td><td>运营建议、风险预警、招商建议</td><td>内部业务辅助决策</td><td>自动化工作流与告警</td><td>内部AI应用生产线</td></tr>
-              <tr><td>软件开发投入</td><td>2人极简团队：你 + 全栈工程师</td><td>3–5人核心小队</td><td>6–8人平台与数据团队</td><td>9–12人内部AI应用平台团队</td></tr>
-              <tr><td>模型微调</td><td>不建议正式微调，仅做Prompt/RAG验证</td><td>夜间LoRA/QLoRA小批量</td><td>夜间自动化训练流水线</td><td>多项目隔离训练</td></tr>
-              <tr><td>Vibe Coding</td><td>1–3人原型开发</td><td>5–10人试点</td><td>10–20人轻量使用</td><td>30人独立开发环境</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </section>
-      
+      <h2>01｜总体结论</h2>
+      <div class="grid-3">
+        <article class="mini highlight"><span class="tag purple">P0验证</span><h3>单场景价值验证</h3><p class="muted">P0不是缩小版阶段1，而是以““钛空间””共享办公室为试点的数字孪生AI决策MVP。目标是验证AI是否能理解空间状态、融合公网信息，并给出可执行运营建议。</p></article>
+        <article class="mini"><span class="tag">软硬一体</span><h3>硬件只是底座，软件决定价值</h3><p class="muted">本项目不能只按GPU、服务器和机房预算评估，还必须纳入软件开发、BIM数据工程、IoT接入、Agent编排、运维安全和团队建设投入。</p></article>
+        <article class="mini"><span class="tag green">投资策略</span><h3>P0轻资产，成功后滚动扩容</h3><p class="muted">P0预算控制在5–30万硬件与物联试点投入；软件开发采用2人极简团队验证价值。若验证成功，再进入阶段1生产化建设。</p></article>
+      </div>
+
+      <div class="grid-4" style="margin-top:16px">
+        <div class="metric p0"><b>5–30万</b><span>P0硬件、IoT试点、演示环境投入。</span></div>
+        <div class="metric"><b>182–405万</b><span>阶段1–3硬件、机房、网络追加投入。</span></div>
+        <div class="metric"><b>240–1135万</b><span>采用Vibe Coding精简后的软件开发、平台、运维和团队投入估算。</span></div>
+        <div class="metric"><b>约427–1570万</b><span>完整路径总投入估算，含P0、三阶段硬件和软件人力。</span></div>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>能力项</th><th>P0验证期</th><th>阶段1投产后</th><th>阶段2增强后</th><th>阶段3完整后</th></tr></thead>
+          <tbody>
+            <tr><td>企业AI问答/知识库</td><td>““钛空间””场景小知识库</td><td class="ok">生产可用</td><td class="ok">多Agent增强</td><td class="ok">接入开发与业务流程</td></tr>
+            <tr><td>数字孪生</td><td>平面图/轻量3D + 数据绑定</td><td>BIM轻量化、查询、看板、基础物联</td><td>设备/公开数据联动</td><td>开发团队快速扩展插件</td></tr>
+            <tr><td>公网信息搜索</td><td>搜索API/轻爬虫，低频采集</td><td>小规模定时采集与入库</td><td>独立爬虫/清洗/向量化节点</td><td>接入Agent和业务流</td></tr>
+            <tr><td>AI决策支持</td><td>运营建议、风险预警、招商建议</td><td>内部业务辅助决策</td><td>自动化工作流与告警</td><td>内部AI应用生产线</td></tr>
+            <tr><td>软件开发投入</td><td>2人极简团队：你 + 全栈工程师</td><td>3–5人核心小队</td><td>6–8人平台与数据团队</td><td>9–12人内部AI应用平台团队</td></tr>
+            <tr><td>模型微调</td><td>不建议正式微调，仅做Prompt/RAG验证</td><td>夜间LoRA/QLoRA小批量</td><td>夜间自动化训练流水线</td><td>多项目隔离训练</td></tr>
+            <tr><td>Vibe Coding</td><td>1–3人原型开发</td><td>5–10人试点</td><td>10–20人轻量使用</td><td>30人独立开发环境</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
 
     <section id="p0" class="section-card">
-      <h2>00｜P0阶段：共享办公数字孪生AI验证（MVP）</h2>
+      <h2>02｜P0阶段：““钛空间””共享办公数字孪生AI验证（MVP）</h2>
       <div class="grid-3">
-        <article class="mini phase p0"><span class="tag purple">核心定位</span><h3>验证价值，而不是建设平台</h3><p>P0的目标不是搭企业AI私有云，而是验证一个共享办公空间场景里，AI能否基于静态与动态数据、结合公网信息，给出可执行的经营与空间优化建议。</p></article>
+        <article class="mini phase p0"><span class="tag purple">核心定位</span><h3>验证价值，而不是建设平台</h3><p>P0的目标不是搭企业AI私有云，而是验证““钛空间””共享办公场景里，AI能否基于静态与动态数据、结合公网信息，给出可执行的经营与空间优化建议。</p></article>
         <article class="mini phase p0"><span class="tag purple">试点业态</span><h3>共享办公空间 / 创业企业入驻</h3><p>围绕入驻率、工位使用率、会议室利用率、能耗、门禁、人流、企业画像、周边创业生态与市场信息，验证数字孪生AI决策闭环。</p></article>
         <article class="mini phase p0"><span class="tag purple">投入原则</span><h3>5–30万轻资产验证</h3><p>如果P0效果不理想，可停止后续阶段；如果验证成功，P0的AI主机、数据结构、IoT接入和原型代码均可复用到阶段1。</p></article>
       </div>
+
       <h3>P0必须验证的3个能力</h3>
       <div class="grid-3">
         <article class="mini"><span class="tag cyan">能力1</span><h3>空间理解</h3><p class="muted">AI能解释空间发生了什么：入住率变化、区域冷热、人流峰谷、会议室瓶颈、能耗异常、设备异常、低效空间。</p></article>
         <article class="mini"><span class="tag cyan">能力2</span><h3>外部信息融合</h3><p class="muted">AI能搜索/采集公网信息：周边商业、创业政策、行业趋势、竞品价格、招聘热度、区域产业动态，并与内部数据交叉分析。</p></article>
         <article class="mini"><span class="tag cyan">能力3</span><h3>决策输出</h3><p class="muted">AI能给出可执行建议：招商方向、价格策略、空间改造、能耗优化、活动建议、风险预警，而不是只展示报表。</p></article>
       </div>
+
       <h3>P0团队组建：2人极简软件开发小队</h3>
       <div class="grid-2">
         <article class="mini highlight"><span class="tag purple">核心负责人</span><h3>BIM/AI架构/产品负责人</h3><p>承担P0产品定义、BIM/AI架构、数字孪生场景设计、IoT点位逻辑、验收指标、管理层汇报和后续P1–P3组织发展路径设计。</p></article>
         <article class="mini"><span class="tag">全栈工程师</span><h3>软件原型与数据闭环开发</h3><p class="muted">负责前后端原型、轻量看板、API、数据库、RAG、Agent调用、IoT数据接入脚本、公网搜索集成和演示环境部署。P0阶段不组大团队，优先用Vibe Coding提高开发效率。</p></article>
       </div>
 
-<div class="table-wrap">
-  <table>
-    <thead><tr><th>岗位</th><th>人数</th><th>费用估算</th><th>核心职能</th><th>后续发展</th></tr></thead>
-    <tbody>
-      <tr><td>BIM/AI架构/产品负责人</td><td>1</td><td class="price">***万/月，视是否计入项目成本</td><td>产品路线、BIM/AI架构、场景验收、团队搭建、供应商判断</td><td>P1–P3升级为产品/解决方案/组织负责人</td></tr>
-      <tr><td>全栈工程师</td><td>1</td><td class="price">2–5万/月</td><td>原型开发、数据服务、看板、Agent/RAG集成、IoT数据接入</td><td>P1后可发展为技术Lead或平台工程负责人</td></tr>
-      <tr><td>IoT/BAS顾问</td><td>0.2–0.5</td><td class="price">1–3万/专项</td><td>传感器、网关、协议、点位规划、现场接入建议</td><td>阶段1/2视现场规模转为长期物联负责人</td></tr>
-      <tr><td>机房/网络/安全顾问</td><td>按需</td><td class="price">1–3万/专项</td><td>网络隔离、外联边界、基础安全、后续机房预留</td><td>阶段1建设前复核</td></tr>
-      <tr><td colspan="2"><strong>P0软件与顾问投入</strong></td><td class="price">约3–15万/月</td><td colspan="2">建议P0周期控制在2–6周，以结果决定是否进入阶段1。</td></tr>
-    </tbody>
-  </table>
-</div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>岗位</th><th>人数</th><th>费用估算</th><th>核心职能</th><th>后续发展</th></tr></thead>
+          <tbody>
+            <tr><td>BIM/AI架构/产品负责人</td><td>1</td><td class="price">***万/月，视是否计入项目成本</td><td>产品路线、BIM/AI架构、场景验收、团队搭建、供应商判断</td><td>P1–P3升级为产品/解决方案/组织负责人</td></tr>
+            <tr><td>全栈工程师</td><td>1</td><td class="price">2–5万/月</td><td>原型开发、数据服务、看板、Agent/RAG集成、IoT数据接入</td><td>P1后可发展为技术Lead或平台工程负责人</td></tr>
+            <tr><td>IoT/BAS顾问</td><td>0.2–0.5</td><td class="price">1–3万/专项</td><td>传感器、网关、协议、点位规划、现场接入建议</td><td>阶段1/2视现场规模转为长期物联负责人</td></tr>
+            <tr><td>机房/网络/安全顾问</td><td>按需</td><td class="price">1–3万/专项</td><td>网络隔离、外联边界、基础安全、后续机房预留</td><td>阶段1建设前复核</td></tr>
+            <tr><td colspan="2"><strong>P0软件与顾问投入</strong></td><td class="price">约3–15万/月</td><td colspan="2">建议P0周期控制在2–6周，以结果决定是否进入阶段1。</td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="table-wrap">
         <table>
@@ -118,50 +120,176 @@
             <tr><td>IoT采集</td><td>门禁、能耗表、温湿度、会议室占用、人流摄像头/WiFi统计</td><td>动态数据采集，支撑数字孪生实时状态</td><td>接入阶段1物联中台</td><td class="price">1–8万</td></tr>
             <tr><td>网络与安全</td><td>千兆交换机；独立公网出口/代理；基础防火墙；办公网隔离</td><td>低频公网搜索、数据采集、演示访问</td><td>升级为VLAN与出口隔离策略</td><td class="price">0.5–3万</td></tr>
             <tr><td>显示/演示</td><td>大屏或投屏终端；运营看板终端</td><td>向管理方和入驻企业演示空间状态与AI建议</td><td>保留为数字孪生展示端</td><td class="price">0.5–2万</td></tr>
-            <tr><td colspan="4"><strong>P0合计</strong></td><td class="price">约5–20万；完整型约10–30万</td></tr>
+            <tr><td colspan="4"><strong>P0硬件与演示环境合计</strong></td><td class="price">约5–20万；完整型约10–30万</td></tr>
+            <tr><td colspan="4"><strong>P0完整现金投入参考</strong></td><td class="price">约8–45万，取决于周期、顾问参与和IoT接入难度</td></tr>
           </tbody>
         </table>
       </div>
+
       <div class="grid-2">
         <article class="mini"><span class="tag green">P0成功标准</span><h3>进入阶段1的触发条件</h3><p>AI能解释空间经营状态；能结合公网信息形成洞察；能输出可执行建议；运营方愿意持续使用；至少形成1–3个可量化优化指标，如能耗下降、会议室利用率提升、招商转化提升。</p></article>
-             </div>
+      </div>
+    </section>
+
+    <section id="p0-plan" class="section-card">
+      <h2>03｜P0实时计划：““钛空间””数字孪生MVP搭建</h2>
+      <p class="muted">P0以““钛空间””为试点对象，目标是在2–6周内完成一个可演示、可验证、可复用的数字孪生AI MVP。计划采用小步快跑方式推进，每周形成可见成果，避免长期闭门开发。</p>
+
+      <div class="grid-4">
+        <div class="metric p0"><b>2人核心</b><span>BIM/AI架构/产品负责人 + 全栈工程师，顾问按需介入。</span></div>
+        <div class="metric"><b>2–6周</b><span>根据BIM资料完整度、IoT接入难度和现场施工窗口调整。</span></div>
+        <div class="metric"><b>1个场景</b><span>聚焦““钛空间””共享办公，不在P0阶段扩展多园区、多楼层复杂场景。</span></div>
+        <div class="metric"><b>1次验收</b><span>以管理层演示、运营人员试用和可量化指标作为进入阶段1依据。</span></div>
+      </div>
+
+      <h3>P0实施节奏</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>周期</th><th>工作主题</th><th>关键任务</th><th>负责人</th><th>交付物</th><th>验收标准</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="nowrap">第0周</td>
+              <td>启动与资料冻结</td>
+              <td>确认““钛空间””范围、楼层/房间/工位/会议室清单；收集平面图、BIM/Revit/IFC/CAD资料；盘点门禁、能耗、温湿度、人流、会议室系统接口。</td>
+              <td>产品负责人</td>
+              <td>范围说明、资料清单、点位清单、验收指标初稿</td>
+              <td class="ok">试点边界清楚，数据源和现场条件可确认</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第1周</td>
+              <td>BIM模型搭建</td>
+              <td>建立““钛空间””轻量BIM/空间模型；完成楼层、房间、工位、会议室、设备、传感器点位编码；准备Web端可加载的轻量化模型或平面数字孪生视图。</td>
+              <td>产品负责人 + BIM顾问</td>
+              <td>““钛空间””空间资产表、模型文件、构件/房间编码规则</td>
+              <td class="ok">模型能表达真实空间，关键区域可点击、可绑定数据</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第1–2周</td>
+              <td>硬件工程与网络准备</td>
+              <td>AI单机、轻量数据服务、IoT网关、交换机、防火墙/隔离网络准备；确认设备安装位置、供电、散热、网络出口和远程维护方式。</td>
+              <td>全栈工程师 + IoT/网络顾问</td>
+              <td>设备清单、网络拓扑、部署记录、账号权限表</td>
+              <td class="ok">AI主机和数据服务可稳定运行，IoT网关可接入测试数据</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第2周</td>
+              <td>软件平台搭建</td>
+              <td>搭建数据库、时序数据表、空间资产表、API服务、看板页面、文件存储、日志记录；形成最小可用数字孪生平台。</td>
+              <td>全栈工程师</td>
+              <td>平台原型、API接口、数据库结构、基础看板</td>
+              <td class="ok">空间、设备、传感器、事件、AI建议结果可入库和展示</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第2–3周</td>
+              <td>AI底座搭建</td>
+              <td>部署本地模型或混合模型调用；搭建Embedding、向量库、RAG知识库、Prompt模板、Agent工具调用；接入““钛空间””资料、运营规则和FAQ。</td>
+              <td>全栈工程师 + 产品负责人</td>
+              <td>AI问答、RAG知识库、Agent原型、提示词模板</td>
+              <td class="ok">AI能回答““钛空间””基础问题，并能引用内部资料给出解释</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第3周</td>
+              <td>物联接入</td>
+              <td>接入门禁、能耗、温湿度、会议室占用、人流/WiFi统计等数据；若正式接口暂不可用，先用网关、导出数据或模拟数据跑通链路。</td>
+              <td>IoT顾问 + 全栈工程师</td>
+              <td>IoT数据接入脚本、点位映射表、实时/准实时数据流</td>
+              <td class="ok">至少3类动态数据能进入平台，并映射到空间或设备</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第3–4周</td>
+              <td>数字孪生联动</td>
+              <td>把BIM/平面空间、IoT数据、运营数据、AI分析结果绑定；实现区域状态、会议室状态、能耗状态、人流热度和异常提醒可视化。</td>
+              <td>产品负责人 + 全栈工程师</td>
+              <td>““钛空间””数字孪生看板、空间状态图、设备/点位详情页</td>
+              <td class="ok">运营人员能通过看板理解空间当前状态和历史变化</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第4–5周</td>
+              <td>AI决策与公网信息融合</td>
+              <td>接入公开信息搜索/API，分析周边竞品、创业政策、行业活动、招商线索；结合内部空间数据输出招商、能耗、会议室、空间优化建议。</td>
+              <td>产品负责人 + 全栈工程师</td>
+              <td>AI分析报告、经营建议卡片、风险预警样例</td>
+              <td class="ok">AI能输出可执行建议，而不只是展示数据</td>
+            </tr>
+            <tr>
+              <td class="nowrap">第5–6周</td>
+              <td>测试、演示与阶段决策</td>
+              <td>完成数据准确性测试、现场演示、运营人员试用、问题修复、成本复盘、阶段1建设建议和复用清单。</td>
+              <td>产品负责人</td>
+              <td>P0验收报告、演示脚本、问题清单、阶段1建议书</td>
+              <td class="ok">满足P0成功标准，明确是否进入阶段1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>P0关键任务分解</h3>
+      <div class="grid-3">
+        <article class="mini phase p0"><span class="tag purple">BIM模型</span><h3>“钛空间”数字底图</h3><p class="muted">完成空间、房间、工位、会议室、设备、传感器点位编码。P0优先可视化关键区域，不追求全量精细建模。</p></article>
+        <article class="mini"><span class="tag">软件平台</span><h3>最小可用平台</h3><p class="muted">包含空间资产、设备资产、时序数据、事件记录、AI建议、看板展示和基础权限，保证P1可迁移。</p></article>
+        <article class="mini"><span class="tag cyan">AI底座</span><h3>RAG + Agent原型</h3><p class="muted">接入“钛空间”资料、运营规则、公网搜索和动态数据，让AI能解释现状、发现异常、生成建议。</p></article>
+        <article class="mini"><span class="tag orange">硬件工程</span><h3>稳定运行优先</h3><p class="muted">AI主机、IoT网关、网络隔离、供电散热、演示大屏和远程维护环境优先稳定，不提前重资产化。</p></article>
+        <article class="mini"><span class="tag green">物联接入</span><h3>动态信息可视化</h3><p class="muted">优先接入门禁、能耗、温湿度、会议室占用、人流/WiFi统计，形成“空间状态实时变化”的核心价值。</p></article>
+        <article class="mini"><span class="tag red">测试验收</span><h3>以经营价值验收</h3><p class="muted">测试不只看页面是否能打开，还要看数据是否可信、AI建议是否可执行、运营人员是否愿意持续使用。</p></article>
+      </div>
+
+      <h3>实时推进机制</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>机制</th><th>频率</th><th>内容</th><th>输出</th></tr></thead>
+          <tbody>
+            <tr><td>每日站会</td><td>每天15分钟</td><td>昨天完成、今天计划、当前阻塞、需协调资源</td><td>任务状态更新</td></tr>
+            <tr><td>P0看板</td><td>实时更新</td><td>按BIM、软件、AI、硬件、IoT、测试六条线管理任务</td><td>待办/进行中/已完成/阻塞</td></tr>
+            <tr><td>每周演示</td><td>每周1次</td><td>展示可运行成果，而不是只汇报文档</td><td>演示记录、问题清单、下周目标</td></tr>
+            <tr><td>数据质量检查</td><td>每周1次</td><td>检查点位、时间戳、缺失率、异常值、空间映射准确性</td><td>数据质量报告</td></tr>
+            <tr><td>阶段验收</td><td>P0结束</td><td>评估经营价值、技术可复用性、阶段1投入必要性</td><td>P0验收报告和阶段1建议</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>P0补充风险与前置条件</h3>
+      <div class="grid-2">
+        <article class="mini"><span class="tag red">前置条件</span><h3>资料与接口必须尽快确认</h3><p class="muted">P0能否在2–6周完成，取决于“钛空间”平面/BIM资料是否完整、IoT设备是否开放接口、现场是否允许安装网关和传感器、网络是否能隔离外联。</p></article>
+        <article class="mini"><span class="tag orange">降级方案</span><h3>正式接口不阻塞MVP</h3><p class="muted">如果门禁、能耗或会议室系统暂时无法开放接口，P0可先用导出数据、模拟数据、低频人工导入跑通闭环，但必须标注为临时数据源。</p></article>
+      </div>
     </section>
 
     <section id="phases" class="section-card">
-        <h2>02｜P0 + 三阶段建设目标</h2>
-        <div class="grid-4">
-          <article class="mini phase p0"><span class="tag purple">P0</span><h3>数字孪生AI MVP</h3><p><strong>目标：</strong>验证共享办公场景是否有AI决策价值。</p><p class="muted"><strong>团队：</strong>2人核心软件小队：BIM/AI架构/产品负责人 + 全栈工程师；IoT、网络、安全采用顾问制。</p></article>
-          <article class="mini phase p1"><span class="tag">阶段1</span><h3>AI基础设施生产化</h3><p><strong>目标：</strong>承接P0成功场景，把本地大模型、知识库、数据库、BIM轻量化、物联基础接入生产化。</p><p class="muted"><strong>团队：</strong>3–5人核心团队，包含AI/全栈、DevOps、BIM、IoT能力。</p></article>
-          <article class="mini phase p2"><span class="tag cyan">阶段2</span><h3>AI平台化与数据闭环</h3><p><strong>目标：</strong>基于P0验证场景扩展Agent调度、公开信息采集、数据清洗、任务队列、夜间自动化流水线。</p><p class="muted"><strong>团队：</strong>6–8人，强化Agent、数据工程、MLOps、IoT现场数据和安全合规。</p></article>
-          <article class="mini phase p3"><span class="tag green">阶段3</span><h3>开发生态与Vibe Coding</h3><p><strong>目标：</strong>支持30人左右开发团队，复制P0场景并快速开发更多AI应用。</p><p class="muted"><strong>团队：</strong>9–12人平台团队，支撑内部开发者、AI应用生产线和多项目复制。</p></article>
-        </div>
-      
-        <h3>分阶段团队组建与软件开发投入</h3>
-        <div class="table-wrap">
-          <table>
-            <thead><tr><th>阶段</th><th>核心团队</th><th>建议人数</th><th>费用估算</th><th>主要职能</th></tr></thead>
-            <tbody>
-              <tr><td>P0 MVP验证</td><td>产品负责人 + 全栈工程师</td><td>2人核心，顾问按需</td><td class="price">约3–15万/月</td><td>BIM/AI产品架构、原型开发、RAG/Agent、轻量看板、IoT试点接入、价值验证</td></tr>
-              <tr><td>阶段1 生产化</td><td>产品架构、AI/全栈、DevOps、BIM、IoT</td><td>3–5人</td><td class="price">约25–90万/阶段</td><td>本地AI服务、数据库、BIM轻量化、基础物联、监控备份、少量Agent试运行</td></tr>
-              <tr><td>阶段2 数据闭环</td><td>AI/Agent、数据工程、MLOps、BIM/IoT、安全测试</td><td>6–8人</td><td class="price">约60–250万/阶段</td><td>Agent编排、公开信息采集、数据清洗、任务队列、时序数据、告警与评测</td></tr>
-              <tr><td>阶段3 开发生态</td><td>平台架构、AI应用、SRE、BIM平台、数据治理、开发者运营</td><td>9–12人</td><td class="price">约150–780万/阶段</td><td>30人Vibe Coding环境、内部AI应用生产线、开发沙箱、CI/CD、权限与安全治理</td></tr>
-              <tr><td colspan="3"><strong>软件开发与团队总投入</strong></td><td class="price">约240–1135万</td><td>采用Vibe Coding精简团队后的估算，不含硬件采购。</td></tr>
-            </tbody>
-          </table>
-        </div>
-      
-        <div class="grid-3">
-          <article class="mini highlight"><span class="tag purple">组织原则</span><h3>P0核心成员要能成长为P1–P3负责人</h3><p class="muted">P0不是临时外包组，而是未来组织的种子层。早期核心成员应优先进入后续AI平台、BIM数字孪生、IoT物联、基础设施和交付管理岗位。</p></article>
-          <article class="mini"><span class="tag cyan">外包边界</span><h3>顾问解决阶段性问题</h3><p class="muted">机房勘察、网络安全、IoT点位复核、BIM模型整理、数据清洗、UI设计和渗透测试可外包；产品、架构、验收和核心数据资产必须内部掌控。</p></article>
-          <article class="mini"><span class="tag green">Vibe Coding</span><h3>少人、高级、强验收</h3><p class="muted">Vibe Coding可以减少普通开发人力，但不能替代架构判断、BIM专业能力、IoT现场经验、运维安全和AI结果评测。</p></article>
-        </div>
-      </section>
-      
+      <h2>04｜P0 + 三阶段建设目标</h2>
+      <div class="grid-4">
+        <article class="mini phase p0"><span class="tag purple">P0</span><h3>数字孪生AI MVP</h3><p><strong>目标：</strong>验证“钛空间”共享办公场景是否有AI决策价值。</p><p class="muted"><strong>团队：</strong>2人核心软件小队：BIM/AI架构/产品负责人 + 全栈工程师；IoT、网络、安全采用顾问制。</p></article>
+        <article class="mini phase p1"><span class="tag">阶段1</span><h3>AI基础设施生产化</h3><p><strong>目标：</strong>承接P0成功场景，把本地大模型、知识库、数据库、BIM轻量化、物联基础接入生产化。</p><p class="muted"><strong>团队：</strong>3–5人核心团队，包含AI/全栈、DevOps、BIM、IoT能力。</p></article>
+        <article class="mini phase p2"><span class="tag cyan">阶段2</span><h3>AI平台化与数据闭环</h3><p><strong>目标：</strong>基于P0验证场景扩展Agent调度、公开信息采集、数据清洗、任务队列、夜间自动化流水线。</p><p class="muted"><strong>团队：</strong>6–8人，强化Agent、数据工程、MLOps、IoT现场数据和安全合规。</p></article>
+        <article class="mini phase p3"><span class="tag green">阶段3</span><h3>开发生态与Vibe Coding</h3><p><strong>目标：</strong>支持30人左右开发团队，复制P0场景并快速开发更多AI应用。</p><p class="muted"><strong>团队：</strong>9–12人平台团队，支撑内部开发者、AI应用生产线和多项目复制。</p></article>
+      </div>
+
+      <h3>分阶段团队组建与软件开发投入</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>阶段</th><th>核心团队</th><th>建议人数</th><th>费用估算</th><th>主要职能</th></tr></thead>
+          <tbody>
+            <tr><td>P0 MVP验证</td><td>产品负责人 + 全栈工程师</td><td>2人核心，顾问按需</td><td class="price">约3–15万/月</td><td>BIM/AI产品架构、原型开发、RAG/Agent、轻量看板、IoT试点接入、价值验证</td></tr>
+            <tr><td>阶段1 生产化</td><td>产品架构、AI/全栈、DevOps、BIM、IoT</td><td>3–5人</td><td class="price">约25–90万/阶段</td><td>本地AI服务、数据库、BIM轻量化、基础物联、监控备份、少量Agent试运行</td></tr>
+            <tr><td>阶段2 数据闭环</td><td>AI/Agent、数据工程、MLOps、BIM/IoT、安全测试</td><td>6–8人</td><td class="price">约60–250万/阶段</td><td>Agent编排、公开信息采集、数据清洗、任务队列、时序数据、告警与评测</td></tr>
+            <tr><td>阶段3 开发生态</td><td>平台架构、AI应用、SRE、BIM平台、数据治理、开发者运营</td><td>9–12人</td><td class="price">约150–780万/阶段</td><td>30人Vibe Coding环境、内部AI应用生产线、开发沙箱、CI/CD、权限与安全治理</td></tr>
+            <tr><td colspan="3"><strong>软件开发与团队总投入</strong></td><td class="price">约240–1135万</td><td>采用Vibe Coding精简团队后的估算，不含硬件采购。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid-3">
+        <article class="mini highlight"><span class="tag purple">组织原则</span><h3>P0核心成员要能成长为P1–P3负责人</h3><p class="muted">P0不是临时外包组，而是未来组织的种子层。早期核心成员应优先进入后续AI平台、BIM数字孪生、IoT物联、基础设施和交付管理岗位。</p></article>
+        <article class="mini"><span class="tag cyan">外包边界</span><h3>顾问解决阶段性问题</h3><p class="muted">机房勘察、网络安全、IoT点位复核、BIM模型整理、数据清洗、UI设计和渗透测试可外包；产品、架构、验收和核心数据资产必须内部掌控。</p></article>
+        <article class="mini"><span class="tag green">Vibe Coding</span><h3>少人、高级、强验收</h3><p class="muted">Vibe Coding可以减少普通开发人力，但不能替代架构判断、BIM专业能力、IoT现场经验、运维安全和AI结果评测。</p></article>
+      </div>
+    </section>
 
     <section id="procurement" class="section-card">
-      <h2>03｜分阶段硬件采购清单与估算</h2>
+      <h2>05｜分阶段硬件采购清单与估算</h2>
       <p class="muted">价格为人民币粗估区间，受品牌、渠道、保修、GPU供需、现场施工和实施服务影响较大。P0用于验证价值，阶段1及以后用于生产化与平台化。</p>
-      <h3>P0：共享办公数字孪生AI MVP包</h3>
+      <h3>P0：“钛空间”共享办公数字孪生AI MVP包</h3>
       <div class="table-wrap"><table><thead><tr><th>模块</th><th>推荐配置</th><th>选型建议</th><th>P0作用</th><th>估算</th></tr></thead><tbody><tr><td>AI单机</td><td>RTX 4080/4090；64–128GB内存；2–4TB NVMe</td><td>优先选稳定电源、良好散热、可长期运行的工作站</td><td>本地模型、RAG、Agent、公网搜索分析</td><td class="price">2–5万</td></tr><tr><td>轻量服务/数据</td><td>可合并部署；或小型服务器/NAS</td><td>PostgreSQL、Qdrant/pgvector、MinIO、时序库</td><td>存储静态/动态数据与分析结果</td><td class="price">0–2万</td></tr><tr><td>传感/采集</td><td>门禁、能耗、温湿度、人流、会议室占用</td><td>优先用开放协议，避免私有闭锁</td><td>形成空间实时状态</td><td class="price">1–8万</td></tr><tr><td>网络/安全</td><td>千兆交换机、基础防火墙、独立公网出口</td><td>外部搜索/爬虫与内部数据隔离</td><td>支持公网搜索与数据采集</td><td class="price">0.5–3万</td></tr><tr><td colspan="4"><strong>P0合计</strong></td><td class="price">约5–20万，完整型10–30万</td></tr></tbody></table></div>
       <h3>阶段1：AI基础设施投产包</h3>
       <div class="table-wrap"><table><thead><tr><th>模块</th><th>推荐配置</th><th>选型建议</th><th>阶段1作用</th><th>估算</th></tr></thead><tbody><tr><td>AI算力服务器</td><td>4U GPU服务器；4×NVIDIA L40S 48GB；512GB ECC；2×1.92TB系统盘；4×3.84TB NVMe；双25GbE；冗余电源</td><td>浪潮/超微/Dell/Lenovo同级4U GPU服务器；高显存需求可替换为2–4×96GB专业GPU</td><td>70B级推理、BIM/视觉AI、夜间LoRA/QLoRA、批量向量化</td><td class="price">60–100万</td></tr><tr><td>数据/存储节点</td><td>32–64核CPU；256GB ECC；NVMe 15–30TB；HDD 80–120TB；RAID10+RAID6；双25GbE</td><td>2U存储服务器或企业NAS+数据库服务器组合</td><td>PostgreSQL、向量库、时序库、MinIO、BIM文件库、备份缓存</td><td class="price">15–35万</td></tr><tr><td>业务/BIM节点</td><td>32核CPU；128GB ECC；4–8TB NVMe；可选RTX 4000/5000 Ada</td><td>2U服务器或高可靠工作站服务器</td><td>业务平台、BIM轻量化服务、物联中台、API网关</td><td class="price">6–15万</td></tr><tr><td>网络</td><td>25GbE核心交换机；万兆/千兆接入；预留100GbE上联</td><td>核心设备一步到位，端口预留≥50%</td><td>AI网、数据网、办公网、IoT网隔离</td><td class="price">8–20万</td></tr><tr><td>机房基础</td><td>42U机柜×1，预留2–4柜位；UPS 15–30kVA；PDU；独立空调；动环监控</td><td>按阶段3电力/制冷预埋</td><td>稳定运行、断电保护、温湿度监控</td><td class="price">20–45万</td></tr><tr><td colspan="4"><strong>阶段1合计</strong></td><td class="price">约110–215万</td></tr></tbody></table></div>
@@ -174,12 +302,11 @@
         <div class="mini dark"><h3>三阶段硬件投入</h3><p style="font-size:32px;font-weight:900;margin:0">约182–405万</p><p class="muted">不含软件定制、人力、长期运维与云备份专线。</p></div>
         <div class="mini dark"><h3>完整路径投入</h3><p style="font-size:32px;font-weight:900;margin:0">约427–1570万</p><p class="muted">含P0、三阶段硬件、软件开发、平台运维和精简团队人力。</p></div>
       </div>
-      
     </section>
 
     <section id="topology" class="section-card">
-      <h2>04｜机房级部署拓扑：从P0到三阶段扩展</h2>
-      <h3>P0拓扑：共享办公空间MVP验证</h3>
+      <h2>06｜机房级部署拓扑：从P0到三阶段扩展</h2>
+      <h3>P0拓扑：“钛空间”共享办公MVP验证</h3>
       <div class="topology">[门禁/能耗/温湿度/会议室占用/人流摄像头]
           │
           ▼
@@ -190,7 +317,7 @@
   ├─ 本地模型 / RAG / Agent
   ├─ PostgreSQL / 向量库 / 时序数据
   ├─ 公网搜索API / 轻量爬虫 / 数据清洗
-  └─ 共享办公数字孪生看板
+  └─ “钛空间”数字孪生看板
           │
           ▼
 [运营人员 / 招商人员 / 管理层]
@@ -254,17 +381,17 @@
     </section>
 
     <section id="room" class="section-card">
-      <h2>05｜机房空间与环境要求</h2>
+      <h2>07｜机房空间与环境要求</h2>
       <div class="room"><div class="metric p0"><b>P0</b><span>可放办公室/弱电间/小型设备间；重点是网络隔离、稳定供电和数据备份，不强制独立机房。</span></div><div class="metric"><b>15–30㎡</b><span>阶段1–3推荐面积；最低不建议低于12㎡。</span></div><div class="metric"><b>2–4柜</b><span>阶段1启用1柜，但按2–4个42U机柜预留。</span></div><div class="metric"><b>20–40kW</b><span>阶段1–3总电力预留；阶段1通常约6–12kW。</span></div><div class="metric"><b>≥800kg/㎡</b><span>楼板承重建议值；GPU服务器、UPS、电池柜需提前核算。</span></div><div class="metric"><b>22±2℃</b><span>建议运行温度；相对湿度建议40%–60%。</span></div></div>
       <div class="table-wrap"><table><thead><tr><th>类别</th><th>P0要求</th><th>阶段1必须做</th><th>阶段2/3扩展要求</th><th>备注</th></tr></thead><tbody><tr><td>空间</td><td>办公区角落/设备间可用；避免高温与灰尘</td><td>独立房间；1个42U机柜启用；预留检修通道</td><td>预留2–4柜位；冷热通道方向固定</td><td>P0不建议投入正式机房装修。</td></tr><tr><td>供电</td><td>稳定市电+小UPS</td><td>独立配电箱；UPS；机柜PDU；接地</td><td>双路市电/发电接入条件；UPS电池包扩展</td><td>阶段1开始按最终容量布线。</td></tr><tr><td>制冷</td><td>普通空调可支撑单机；注意排热</td><td>独立空调或小型精密空调；热风排出路径明确</td><td>冗余空调；封闭冷/热通道；必要时液冷评估</td><td>GPU服务器长期运行不建议靠办公空调。</td></tr><tr><td>网络</td><td>千兆网络；公网出口可控；基础隔离</td><td>VLAN隔离；核心交换机25GbE；管理网独立</td><td>100GbE骨干；更多光口；链路聚合</td><td>P0数据结构和IP规划要为阶段1迁移预留。</td></tr><tr><td>安全</td><td>公网搜索/爬虫与内部数据隔离</td><td>防火墙、堡垒机、最小权限、审计日志</td><td>零信任、数据脱敏、外采出口隔离</td><td>外部采集任务不得直写核心库。</td></tr></tbody></table></div>
     </section>
 
     <section id="ops" class="section-card">
-      <h2>06｜落地必须明确的点</h2>
-      <div class="grid-2"><article class="mini highlight"><span class="tag purple">必须明确 0</span><h3>P0不是阶段1的低配版</h3><p>P0只验证共享办公数字孪生AI决策价值。不要在P0阶段采购重型GPU服务器、正式机柜和复杂平台，否则会在商业价值尚未验证前形成沉没成本。</p></article><article class="mini"><span class="tag green">必须明确 1</span><h3>P0成功后再进入阶段1</h3><p>阶段1应承接P0已经跑通的场景，扩展为生产级AI、数据库、BIM和物联底座；不是重新做一套系统。</p></article><article class="mini"><span class="tag red">必须明确 2</span><h3>昼夜算力调度策略</h3><p>阶段1以后，白天GPU优先服务在线业务；晚上自动切换为爬虫清洗、向量化、微调、评测和日志压缩。必须有优先级、重试、检查点和上班前恢复机制。</p></article><article class="mini"><span class="tag orange">必须明确 3</span><h3>数据分区与迁移</h3><p>P0就要使用可迁移的数据结构：空间资产、设备点位、时间序列、事件、外部信息、AI建议结果都要结构化，避免P0代码和数据后续无法复用。</p></article><article class="mini"><span class="tag cyan">必须明确 4</span><h3>公网信息搜索合规边界</h3><p>优先使用搜索API、公开数据源和低频采集；采集任务应遵守网站规则、速率限制和数据使用边界，并与企业内部数据隔离。</p></article><article class="mini"><span class="tag green">必须明确 5</span><h3>验收指标</h3><p>P0验收看决策价值：是否产生可执行建议、是否被运营人员采用、是否能量化改善；阶段1以后再看并发、稳定性、GPU利用率、备份恢复和机房可靠性。</p></article></div>
+      <h2>08｜落地必须明确的点</h2>
+      <div class="grid-2"><article class="mini highlight"><span class="tag purple">必须明确 0</span><h3>P0不是阶段1的低配版</h3><p>P0只验证“钛空间”共享办公数字孪生AI决策价值。不要在P0阶段采购重型GPU服务器、正式机柜和复杂平台，否则会在商业价值尚未验证前形成沉没成本。</p></article><article class="mini"><span class="tag green">必须明确 1</span><h3>P0成功后再进入阶段1</h3><p>阶段1应承接P0已经跑通的场景，扩展为生产级AI、数据库、BIM和物联底座；不是重新做一套系统。</p></article><article class="mini"><span class="tag red">必须明确 2</span><h3>昼夜算力调度策略</h3><p>阶段1以后，白天GPU优先服务在线业务；晚上自动切换为爬虫清洗、向量化、微调、评测和日志压缩。必须有优先级、重试、检查点和上班前恢复机制。</p></article><article class="mini"><span class="tag orange">必须明确 3</span><h3>数据分区与迁移</h3><p>P0就要使用可迁移的数据结构：空间资产、设备点位、时间序列、事件、外部信息、AI建议结果都要结构化，避免P0代码和数据后续无法复用。</p></article><article class="mini"><span class="tag cyan">必须明确 4</span><h3>公网信息搜索合规边界</h3><p>优先使用搜索API、公开数据源和低频采集；采集任务应遵守网站规则、速率限制和数据使用边界，并与企业内部数据隔离。</p></article><article class="mini"><span class="tag green">必须明确 5</span><h3>验收指标</h3><p>P0验收看决策价值：是否产生可执行建议、是否被运营人员采用、是否能量化改善；阶段1以后再看并发、稳定性、GPU利用率、备份恢复和机房可靠性。</p></article></div>
     </section>
 
-    <footer class="footer"><p>本方案为企业级AI本地部署P0至三阶段硬件与机房规划草案；最终采购需结合现场勘查、供电容量、品牌兼容性、保修服务、软件授权和安全合规要求复核。</p></footer>
+    <footer class="footer"><p>本方案为企业级AI本地部署P0至三阶段软硬一体建设规划草案；最终采购需结合现场勘查、供电容量、品牌兼容性、保修服务、软件授权和安全合规要求复核。</p></footer>
   </main>
 </body>
 </html>
