@@ -46,26 +46,36 @@
     </header>
 
     <section id="summary" class="section-card">
-      <h2>01｜总体结论</h2>
-      <div class="grid-3">
-        <article class="mini highlight"><span class="tag purple">P0验证</span><h3>单场景价值验证</h3><p class="muted">P0不是缩小版阶段1，而是共享办公空间数字孪生AI决策MVP。目标是验证AI是否能理解空间状态、融合公网信息，并给出可执行运营建议。</p></article>
-        <article class="mini"><span class="tag">落地架构</span><h3>“P0 + 三阶段”</h3><p class="muted">P0验证价值；阶段1生产化基础设施；阶段2平台化与数据闭环；阶段3开发生态与Vibe Coding。</p></article>
-        <article class="mini"><span class="tag green">投资策略</span><h3>P0轻资产，阶段1预埋后续能力</h3><p class="muted">P0预算控制在5–30万；若效果不理想，停止后续投入。若验证成功，P0资产可转为阶段1的Agent节点、开发节点或数据采集边缘节点。</p></article>
-      </div>
-      <div class="table-wrap">
-        <table>
-          <thead><tr><th>能力项</th><th>P0验证期</th><th>阶段1投产后</th><th>阶段2增强后</th><th>阶段3完整后</th></tr></thead>
-          <tbody>
-            <tr><td>企业AI问答/知识库</td><td>共享办公场景小知识库</td><td class="ok">生产可用</td><td class="ok">多Agent增强</td><td class="ok">接入开发与业务流程</td></tr>
-            <tr><td>数字孪生</td><td>平面图/轻量3D + 数据绑定</td><td>BIM轻量化、查询、看板、基础物联</td><td>设备/公开数据联动</td><td>开发团队快速扩展插件</td></tr>
-            <tr><td>公网信息搜索</td><td>搜索API/轻爬虫，低频采集</td><td>小规模定时采集与入库</td><td>独立爬虫/清洗/向量化节点</td><td>接入Agent和业务流</td></tr>
-            <tr><td>AI决策支持</td><td>运营建议、风险预警、招商建议</td><td>内部业务辅助决策</td><td>自动化工作流与告警</td><td>内部AI应用生产线</td></tr>
-            <tr><td>模型微调</td><td>不建议正式微调，仅做Prompt/RAG验证</td><td>夜间LoRA/QLoRA小批量</td><td>夜间自动化训练流水线</td><td>多项目隔离训练</td></tr>
-            <tr><td>Vibe Coding</td><td>1–3人原型开发</td><td>5–10人试点</td><td>10–20人轻量使用</td><td>30人独立开发环境</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
+        <h2>01｜总体结论</h2>
+        <div class="grid-3">
+          <article class="mini highlight"><span class="tag purple">P0验证</span><h3>单场景价值验证</h3><p class="muted">P0不是缩小版阶段1，而是共享办公空间数字孪生AI决策MVP。目标是验证AI是否能理解空间状态、融合公网信息，并给出可执行运营建议。</p></article>
+          <article class="mini"><span class="tag">软硬一体</span><h3>硬件只是底座，软件决定价值</h3><p class="muted">本项目不能只按GPU、服务器和机房预算评估，还必须纳入软件开发、BIM数据工程、IoT接入、Agent编排、运维安全和团队建设投入。</p></article>
+          <article class="mini"><span class="tag green">投资策略</span><h3>P0轻资产，成功后滚动扩容</h3><p class="muted">P0预算控制在5–30万硬件与物联试点投入；软件开发采用2人极简团队验证价值。若验证成功，再进入阶段1生产化建设。</p></article>
+        </div>
+      
+        <div class="grid-4" style="margin-top:16px">
+          <div class="metric p0"><b>5–30万</b><span>P0硬件、IoT试点、演示环境投入。</span></div>
+          <div class="metric"><b>182–405万</b><span>阶段1–3硬件、机房、网络追加投入。</span></div>
+          <div class="metric"><b>240–1135万</b><span>采用Vibe Coding精简后的软件开发、平台、运维和团队投入估算。</span></div>
+          <div class="metric"><b>约427–1570万</b><span>完整路径总投入估算，含P0、三阶段硬件和软件人力。</span></div>
+        </div>
+      
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>能力项</th><th>P0验证期</th><th>阶段1投产后</th><th>阶段2增强后</th><th>阶段3完整后</th></tr></thead>
+            <tbody>
+              <tr><td>企业AI问答/知识库</td><td>共享办公场景小知识库</td><td class="ok">生产可用</td><td class="ok">多Agent增强</td><td class="ok">接入开发与业务流程</td></tr>
+              <tr><td>数字孪生</td><td>平面图/轻量3D + 数据绑定</td><td>BIM轻量化、查询、看板、基础物联</td><td>设备/公开数据联动</td><td>开发团队快速扩展插件</td></tr>
+              <tr><td>公网信息搜索</td><td>搜索API/轻爬虫，低频采集</td><td>小规模定时采集与入库</td><td>独立爬虫/清洗/向量化节点</td><td>接入Agent和业务流</td></tr>
+              <tr><td>AI决策支持</td><td>运营建议、风险预警、招商建议</td><td>内部业务辅助决策</td><td>自动化工作流与告警</td><td>内部AI应用生产线</td></tr>
+              <tr><td>软件开发投入</td><td>2人极简团队：你 + 全栈工程师</td><td>3–5人核心小队</td><td>6–8人平台与数据团队</td><td>9–12人内部AI应用平台团队</td></tr>
+              <tr><td>模型微调</td><td>不建议正式微调，仅做Prompt/RAG验证</td><td>夜间LoRA/QLoRA小批量</td><td>夜间自动化训练流水线</td><td>多项目隔离训练</td></tr>
+              <tr><td>Vibe Coding</td><td>1–3人原型开发</td><td>5–10人试点</td><td>10–20人轻量使用</td><td>30人独立开发环境</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      
 
     <section id="p0" class="section-card">
       <h2>00｜P0阶段：共享办公数字孪生AI验证（MVP）</h2>
@@ -80,6 +90,25 @@
         <article class="mini"><span class="tag cyan">能力2</span><h3>外部信息融合</h3><p class="muted">AI能搜索/采集公网信息：周边商业、创业政策、行业趋势、竞品价格、招聘热度、区域产业动态，并与内部数据交叉分析。</p></article>
         <article class="mini"><span class="tag cyan">能力3</span><h3>决策输出</h3><p class="muted">AI能给出可执行建议：招商方向、价格策略、空间改造、能耗优化、活动建议、风险预警，而不是只展示报表。</p></article>
       </div>
+      <h3>P0团队组建：2人极简软件开发小队</h3>
+      <div class="grid-2">
+        <article class="mini highlight"><span class="tag purple">核心负责人</span><h3>BIM/AI架构/产品负责人</h3><p>承担P0产品定义、BIM/AI架构、数字孪生场景设计、IoT点位逻辑、验收指标、管理层汇报和后续P1–P3组织发展路径设计。</p></article>
+        <article class="mini"><span class="tag">全栈工程师</span><h3>软件原型与数据闭环开发</h3><p class="muted">负责前后端原型、轻量看板、API、数据库、RAG、Agent调用、IoT数据接入脚本、公网搜索集成和演示环境部署。P0阶段不组大团队，优先用Vibe Coding提高开发效率。</p></article>
+      </div>
+
+<div class="table-wrap">
+  <table>
+    <thead><tr><th>岗位</th><th>人数</th><th>费用估算</th><th>核心职能</th><th>后续发展</th></tr></thead>
+    <tbody>
+      <tr><td>BIM/AI架构/产品负责人</td><td>1</td><td class="price">***万/月，视是否计入项目成本</td><td>产品路线、BIM/AI架构、场景验收、团队搭建、供应商判断</td><td>P1–P3升级为产品/解决方案/组织负责人</td></tr>
+      <tr><td>全栈工程师</td><td>1</td><td class="price">2–5万/月</td><td>原型开发、数据服务、看板、Agent/RAG集成、IoT数据接入</td><td>P1后可发展为技术Lead或平台工程负责人</td></tr>
+      <tr><td>IoT/BAS顾问</td><td>0.2–0.5</td><td class="price">1–3万/专项</td><td>传感器、网关、协议、点位规划、现场接入建议</td><td>阶段1/2视现场规模转为长期物联负责人</td></tr>
+      <tr><td>机房/网络/安全顾问</td><td>按需</td><td class="price">1–3万/专项</td><td>网络隔离、外联边界、基础安全、后续机房预留</td><td>阶段1建设前复核</td></tr>
+      <tr><td colspan="2"><strong>P0软件与顾问投入</strong></td><td class="price">约3–15万/月</td><td colspan="2">建议P0周期控制在2–6周，以结果决定是否进入阶段1。</td></tr>
+    </tbody>
+  </table>
+</div>
+
       <div class="table-wrap">
         <table>
           <thead><tr><th>模块</th><th>P0推荐配置</th><th>用途</th><th>阶段1复用方式</th><th>估算</th></tr></thead>
@@ -99,14 +128,35 @@
     </section>
 
     <section id="phases" class="section-card">
-      <h2>02｜P0 + 三阶段建设目标</h2>
-      <div class="grid-4">
-        <article class="mini phase p0"><span class="tag purple">P0</span><h3>数字孪生AI MVP</h3><p><strong>目标：</strong>验证共享办公场景是否有AI决策价值。</p><p class="muted"><strong>边界：</strong>轻资产、可停止、可复用，不追求高并发。</p></article>
-        <article class="mini phase p1"><span class="tag">阶段1</span><h3>AI基础设施生产化</h3><p><strong>目标：</strong>承接P0成功场景，把本地大模型、知识库、数据库、BIM轻量化、物联基础接入生产化。</p><p class="muted"><strong>边界：</strong>可试运行少量Agent、少量爬虫、5–10人Vibe Coding。</p></article>
-        <article class="mini phase p2"><span class="tag cyan">阶段2</span><h3>AI平台化与数据闭环</h3><p><strong>目标：</strong>基于P0验证场景扩展Agent调度、公开信息采集、数据清洗、任务队列、夜间自动化流水线。</p><p class="muted"><strong>边界：</strong>把试运行能力升级为可监控、可恢复的生产能力。</p></article>
-        <article class="mini phase p3"><span class="tag green">阶段3</span><h3>开发生态与Vibe Coding</h3><p><strong>目标：</strong>支持30人左右开发团队，复制P0场景并快速开发更多AI应用。</p><p class="muted"><strong>边界：</strong>形成内部AI应用生产线。</p></article>
-      </div>
-    </section>
+        <h2>02｜P0 + 三阶段建设目标</h2>
+        <div class="grid-4">
+          <article class="mini phase p0"><span class="tag purple">P0</span><h3>数字孪生AI MVP</h3><p><strong>目标：</strong>验证共享办公场景是否有AI决策价值。</p><p class="muted"><strong>团队：</strong>2人核心软件小队：BIM/AI架构/产品负责人 + 全栈工程师；IoT、网络、安全采用顾问制。</p></article>
+          <article class="mini phase p1"><span class="tag">阶段1</span><h3>AI基础设施生产化</h3><p><strong>目标：</strong>承接P0成功场景，把本地大模型、知识库、数据库、BIM轻量化、物联基础接入生产化。</p><p class="muted"><strong>团队：</strong>3–5人核心团队，包含AI/全栈、DevOps、BIM、IoT能力。</p></article>
+          <article class="mini phase p2"><span class="tag cyan">阶段2</span><h3>AI平台化与数据闭环</h3><p><strong>目标：</strong>基于P0验证场景扩展Agent调度、公开信息采集、数据清洗、任务队列、夜间自动化流水线。</p><p class="muted"><strong>团队：</strong>6–8人，强化Agent、数据工程、MLOps、IoT现场数据和安全合规。</p></article>
+          <article class="mini phase p3"><span class="tag green">阶段3</span><h3>开发生态与Vibe Coding</h3><p><strong>目标：</strong>支持30人左右开发团队，复制P0场景并快速开发更多AI应用。</p><p class="muted"><strong>团队：</strong>9–12人平台团队，支撑内部开发者、AI应用生产线和多项目复制。</p></article>
+        </div>
+      
+        <h3>分阶段团队组建与软件开发投入</h3>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>阶段</th><th>核心团队</th><th>建议人数</th><th>费用估算</th><th>主要职能</th></tr></thead>
+            <tbody>
+              <tr><td>P0 MVP验证</td><td>产品负责人 + 全栈工程师</td><td>2人核心，顾问按需</td><td class="price">约3–15万/月</td><td>BIM/AI产品架构、原型开发、RAG/Agent、轻量看板、IoT试点接入、价值验证</td></tr>
+              <tr><td>阶段1 生产化</td><td>产品架构、AI/全栈、DevOps、BIM、IoT</td><td>3–5人</td><td class="price">约25–90万/阶段</td><td>本地AI服务、数据库、BIM轻量化、基础物联、监控备份、少量Agent试运行</td></tr>
+              <tr><td>阶段2 数据闭环</td><td>AI/Agent、数据工程、MLOps、BIM/IoT、安全测试</td><td>6–8人</td><td class="price">约60–250万/阶段</td><td>Agent编排、公开信息采集、数据清洗、任务队列、时序数据、告警与评测</td></tr>
+              <tr><td>阶段3 开发生态</td><td>平台架构、AI应用、SRE、BIM平台、数据治理、开发者运营</td><td>9–12人</td><td class="price">约150–780万/阶段</td><td>30人Vibe Coding环境、内部AI应用生产线、开发沙箱、CI/CD、权限与安全治理</td></tr>
+              <tr><td colspan="3"><strong>软件开发与团队总投入</strong></td><td class="price">约240–1135万</td><td>采用Vibe Coding精简团队后的估算，不含硬件采购。</td></tr>
+            </tbody>
+          </table>
+        </div>
+      
+        <div class="grid-3">
+          <article class="mini highlight"><span class="tag purple">组织原则</span><h3>P0核心成员要能成长为P1–P3负责人</h3><p class="muted">P0不是临时外包组，而是未来组织的种子层。早期核心成员应优先进入后续AI平台、BIM数字孪生、IoT物联、基础设施和交付管理岗位。</p></article>
+          <article class="mini"><span class="tag cyan">外包边界</span><h3>顾问解决阶段性问题</h3><p class="muted">机房勘察、网络安全、IoT点位复核、BIM模型整理、数据清洗、UI设计和渗透测试可外包；产品、架构、验收和核心数据资产必须内部掌控。</p></article>
+          <article class="mini"><span class="tag green">Vibe Coding</span><h3>少人、高级、强验收</h3><p class="muted">Vibe Coding可以减少普通开发人力，但不能替代架构判断、BIM专业能力、IoT现场经验、运维安全和AI结果评测。</p></article>
+        </div>
+      </section>
+      
 
     <section id="procurement" class="section-card">
       <h2>03｜分阶段硬件采购清单与估算</h2>
@@ -119,7 +169,12 @@
       <div class="table-wrap"><table><thead><tr><th>模块</th><th>推荐配置</th><th>选型建议</th><th>新增价值</th><th>估算</th></tr></thead><tbody><tr><td>Agent调度节点</td><td>32核CPU；128–256GB ECC；2–4TB NVMe；双10/25GbE</td><td>普通2U服务器即可，重在稳定和队列吞吐</td><td>多Agent工作流、工具调用、任务编排、权限隔离</td><td class="price">6–12万</td></tr><tr><td>爬虫/ETL节点</td><td>32–64核CPU；128–256GB内存；8–16TB NVMe；可选轻量GPU</td><td>CPU和内存优先，GPU仅用于清洗/嵌入加速</td><td>公开信息采集、清洗、去重、结构化、夜间入库</td><td class="price">8–20万</td></tr><tr><td>存储扩展</td><td>新增80–160TB HDD；新增8–16TB NVMe热数据池</td><td>优先扩容对象存储和备份容量</td><td>网页快照、文档、日志、历史BIM快照、训练数据集</td><td class="price">10–30万</td></tr><tr><td>网络/安全增强</td><td>防火墙策略细化；代理出口隔离；日志审计；堡垒机</td><td>公开采集流量必须与核心业务网隔离</td><td>降低外联任务对核心系统的风险</td><td class="price">8–20万</td></tr><tr><td colspan="4"><strong>阶段2追加</strong></td><td class="price">约32–82万</td></tr></tbody></table></div>
       <h3>阶段3：30人 Vibe Coding 与内部AI开发生态包</h3>
       <div class="table-wrap"><table><thead><tr><th>模块</th><th>推荐配置</th><th>选型建议</th><th>新增价值</th><th>估算</th></tr></thead><tbody><tr><td>Kubernetes/开发节点×2–3</td><td>每节点32–64核CPU；128–256GB ECC；4–8TB NVMe；双25GbE</td><td>优先横向扩展，不建议所有开发环境压在单机</td><td>VS Code Server、JetBrains Gateway、容器沙箱、CI/CD</td><td class="price">20–45万</td></tr><tr><td>开发辅助GPU</td><td>1–2×NVIDIA L4 24GB 或 RTX 4000/5000 Ada级别</td><td>重训练仍交给AI算力池</td><td>小模型测试、代码Agent、轻量推理、开发者沙箱</td><td class="price">5–18万</td></tr><tr><td>代码与制品存储</td><td>20–50TB对象/文件存储；SSD缓存；快照备份</td><td>GitLab/Gitea、镜像仓库、模型制品库分区</td><td>支撑30人开发、模型版本、代码资产沉淀</td><td class="price">5–15万</td></tr><tr><td>机房扩展</td><td>新增机柜/PDU/UPS电池包/空调冗余</td><td>按实际功耗补齐</td><td>支持持续扩容和故障冗余</td><td class="price">10–30万</td></tr><tr><td colspan="4"><strong>阶段3追加</strong></td><td class="price">约40–108万</td></tr></tbody></table></div>
-      <div class="grid-3"><div class="mini dark"><h3>P0验证投入</h3><p style="font-size:32px;font-weight:900;margin:0">约5–30万</p><p class="muted">验证失败可止损；验证成功可复用。</p></div><div class="mini dark"><h3>三阶段总投入</h3><p style="font-size:32px;font-weight:900;margin:0">约182–405万</p><p class="muted">不含软件定制、人力、长期运维与云备份专线。</p></div><div class="mini dark"><h3>完整路径投入</h3><p style="font-size:32px;font-weight:900;margin:0">约187–435万</p><p class="muted">按P0成功后继续进入阶段1–3估算。</p></div></div>
+      <div class="grid-3">
+        <div class="mini dark"><h3>P0验证投入</h3><p style="font-size:32px;font-weight:900;margin:0">约5–30万</p><p class="muted">硬件、IoT试点与演示环境；不含长期团队。</p></div>
+        <div class="mini dark"><h3>三阶段硬件投入</h3><p style="font-size:32px;font-weight:900;margin:0">约182–405万</p><p class="muted">不含软件定制、人力、长期运维与云备份专线。</p></div>
+        <div class="mini dark"><h3>完整路径投入</h3><p style="font-size:32px;font-weight:900;margin:0">约427–1570万</p><p class="muted">含P0、三阶段硬件、软件开发、平台运维和精简团队人力。</p></div>
+      </div>
+      
     </section>
 
     <section id="topology" class="section-card">
