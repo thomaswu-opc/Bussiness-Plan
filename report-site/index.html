@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Revit 正向设计 幕墙节点表达与建模提效咨询方案汇报</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="页面导航">
+      <a class="brand" href="#hero" aria-label="返回首页">
+        <span class="brand-mark"></span>
+        <span>上海建筑设计研究院有限公司 x 上海开诚建设工程咨询有限公司</span>
+      </a>
+      <nav class="nav">
+        <a href="#context">背景</a>
+        <a href="#cad">二维表达</a>
+        <a href="#plugin">三维插件</a>
+        <a href="#capacity">效率测算</a>
+        <a href="#deliverables">交付沉淀</a>
+      </nav>
+    </header>
+
+    <main>
+      <section id="hero" class="hero section-shell">
+        <div class="hero-copy">
+          <p class="eyebrow">上海建筑设计研究院有限公司 x 上海开诚建设工程咨询有限公司 · 迪士尼项目 · 驻场 1 个月</p>
+          <h1>Revit 正向设计 幕墙节点表达与建模提效咨询方案汇报</h1>
+          <p class="lead">
+            以实际出图和建模工作为基础，梳理 CAD to Revit 二维节点表达路径，
+            并结合 Revit-CW-plugin 插件思路，通过基于 AI 的 Vibe Coding 开发方式，
+            建立可复用的三维幕墙正向设计提效方案。
+          </p>
+          <div class="hero-actions" aria-label="关键结论">
+            <a class="primary-action" href="#capacity">查看效率测算</a>
+            <a class="secondary-action" href="#plugin">查看插件方案</a>
+          </div>
+        </div>
+
+        <div class="hero-visual" aria-label="CAD 节点到 Revit 表达再到插件规则生成的流程">
+          <div class="workflow-board">
+            <article class="workflow-card cad-card">
+              <div class="workflow-label">
+                <strong>CAD 节点</strong>
+                <span>保留已绘制细部</span>
+              </div>
+              <div class="cad-detail" aria-hidden="true">
+                <i class="hatch"></i>
+                <i class="profile"></i>
+                <i class="curve"></i>
+                <i class="joint"></i>
+              </div>
+              <p>小倒角、曲线与填充在 CAD 内先处理稳定。</p>
+            </article>
+
+            <div class="workflow-arrow" aria-hidden="true"></div>
+
+            <article class="workflow-card revit-card">
+              <div class="workflow-label">
+                <strong>Revit 表达</strong>
+                <span>80% 导入 + 20% 补充</span>
+              </div>
+              <div class="sheet-detail" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <b></b>
+              </div>
+              <p>导入后保持主要图面样式，用 Revit 二维线和遮罩补齐。</p>
+            </article>
+
+            <div class="workflow-arrow" aria-hidden="true"></div>
+
+            <article class="workflow-card rule-card">
+              <div class="workflow-label">
+                <strong>规则生成</strong>
+                <span>插件沉淀三维能力</span>
+              </div>
+              <div class="rule-detail" aria-hidden="true">
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span>
+              </div>
+              <p>路径、分格、面板和龙骨规则进入 Revit-CW-plugin。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="context" class="section-shell intro-grid">
+        <div class="section-title">
+          <p class="eyebrow">01 · 项目背景</p>
+          <h2>问题不是“会不会画”，而是如何在 Revit 里高效、稳定、可复用地表达幕墙设计。</h2>
+        </div>
+        <div class="intro-copy">
+          <p>
+            本次驻场工作围绕迪士尼项目的 Revit 出图要求展开。幕墙方案提资以 CAD 节点图为主，
+            但项目成果需要进入 Revit 图纸体系。对于不熟悉 Revit 的设计师来说，
+            二维节点表达、三维翻模和族资源复用都容易形成效率瓶颈。
+          </p>
+          <p>
+            我的角色不仅是提出操作建议，而是在参与实际建模和出图的过程中验证路径：
+            一方面解决二维节点图从 CAD 到 Revit 后的表达保真问题，另一方面承担定制插件开发，
+            并以 AI 辅助的 Vibe Coding 快速迭代插件原型，让幕墙建模从重复手工操作逐步转向规则驱动。
+          </p>
+        </div>
+      </section>
+
+      <section class="section-shell pain-section">
+        <div class="section-title compact">
+          <p class="eyebrow">核心任务</p>
+          <h2>两条工作线同步推进</h2>
+        </div>
+        <div class="two-track">
+          <article class="track-card">
+            <span class="track-no">A</span>
+            <h3>CAD to Revit 二维节点表达</h3>
+            <p>解决小尺寸倒角、曲线、填充、线型和遮罩在 Revit 二维出图中的表达问题。</p>
+            <ul>
+              <li>保留 CAD 已完成的节点绘制成果</li>
+              <li>规避 Revit 小于 0.8mm 线段表达限制</li>
+              <li>用 Revit 二维线补齐剩余表达</li>
+            </ul>
+          </article>
+          <article class="track-card">
+            <span class="track-no">B</span>
+            <h3>Revit 三维翻模效率提升</h3>
+            <p>通过 Revit 二次开发与 AI Vibe Coding，把重复建模步骤沉淀为路径、规则、模板和资源驱动的插件能力。</p>
+            <ul>
+              <li>降低重复分格、面板替换和龙骨布置工作量</li>
+              <li>复用项目资源与本地素材库</li>
+              <li>保留原生 Revit 模型可编辑性</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section id="cad" class="section-shell cad-section">
+        <div class="section-title">
+          <p class="eyebrow">02 · 二维节点表达</p>
+          <h2>CAD 图纸不是问题本身，关键是找到进入 Revit 后仍能保留表达质量的转换方法。</h2>
+        </div>
+        <div class="cad-layout">
+          <div class="cad-diagram" aria-label="CAD 到 Revit 的节点处理流程">
+            <div class="flow-node strong">CAD 节点图</div>
+            <div class="flow-line"></div>
+            <div class="flow-node">炸开含填充线段</div>
+            <div class="flow-line"></div>
+            <div class="flow-node strong">导入 Revit</div>
+            <div class="flow-line"></div>
+            <div class="flow-node">二维线补充</div>
+            <div class="flow-line"></div>
+            <div class="flow-node strong">出图表达</div>
+          </div>
+          <div class="cad-copy">
+            <h3>已验证的解决路径</h3>
+            <p>
+              对已在 CAD 中绘制完成的节点图，先在 CAD 里将带填充的线段炸开，再导入 Revit，
+              可以较稳定地保持填充表达，约保留 80% 的 CAD 样式。
+            </p>
+            <p>
+              剩余约 20% 的差异，例如线型、遮罩、局部二维表达控制，
+              通过 Revit 内置二维线、遮罩区域和图纸视图补充完成。这样既规避 Revit 对极小线段的表达限制，
+              也避免把已经完成的 CAD 节点全部重画。
+            </p>
+            <div class="ratio-strip" aria-label="表达保真比例">
+              <span style="--w: 80%">CAD 样式保留 80%</span>
+              <span style="--w: 20%">Revit 补充 20%</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="plugin" class="section-shell plugin-section">
+        <div class="section-title">
+          <p class="eyebrow">03 · 三维建模提效</p>
+          <h2>Revit-CW-plugin 的核心思路：选择路径或面，套用规则模板，生成可继续编辑的 Revit 幕墙模型。</h2>
+        </div>
+
+        <div class="plugin-grid">
+          <article class="solution-card">
+            <h3>建模痛点</h3>
+            <p>重复性工作高，分格、面板替换、龙骨布置依赖人工逐项处理，方案调整后返工明显。</p>
+          </article>
+          <article class="solution-card">
+            <h3>资源痛点</h3>
+            <p>已有 Rhino 模型进入 Revit 后难以作为可编辑幕墙继续深化，族资源和规则难以复用。</p>
+          </article>
+          <article class="solution-card">
+            <h3>插件路线</h3>
+            <p>基于 C#、Revit API、WPF 参数面板和 JSON 模板，并引入 AI Vibe Coding 进行快速开发与验证，建立幕墙系统、分格和面板替换规则。</p>
+          </article>
+          <article class="solution-card ai-card">
+            <h3>AI 开发亮点</h3>
+            <p>以实际业务痛点为提示词输入，将需求拆解、代码生成、调试修正和文档沉淀串成连续迭代流程，缩短插件从想法到可测 MVP 的周期。</p>
+          </article>
+        </div>
+
+        <div class="pipeline" aria-label="插件生成流程">
+          <div><span>1</span>选择路径 / 墙线 / 面</div>
+          <div><span>2</span>选择幕墙系统模板</div>
+          <div><span>3</span>输入标高与分格规则</div>
+          <div><span>4</span>调用项目资源与素材库</div>
+          <div><span>5</span>生成原生 Curtain Wall</div>
+          <div><span>6</span>输出摘要与异常提示</div>
+        </div>
+      </section>
+
+      <section id="capacity" class="section-shell metrics-section">
+        <div class="section-title">
+          <p class="eyebrow">04 · 工作量量化</p>
+          <h2>以保守产能测算团队节奏，既体现提效，也给项目执行留足容错空间。</h2>
+        </div>
+
+        <div class="metrics-grid">
+          <article class="metric-card highlight">
+            <span class="metric-value">1 小时</span>
+            <p>采用 CAD 处理 + Revit 补充表达后，约可完成 1 张节点图。</p>
+          </article>
+          <article class="metric-card">
+            <span class="metric-value">2 天</span>
+            <p>原团队不熟悉 Revit 时，约 2 天完成 1 张节点图。</p>
+          </article>
+          <article class="metric-card">
+            <span class="metric-value">3 张/人/天</span>
+            <p>建议对外按保守产能统计，不按满负荷 8 张计算。</p>
+          </article>
+          <article class="metric-card">
+            <span class="metric-value">9 张/天</span>
+            <p>3 人同步作业时，可按约 9 张/天规划节点图推进。</p>
+          </article>
+        </div>
+
+        <div class="comparison-table" role="table" aria-label="效率对照表">
+          <div class="table-row header" role="row">
+            <span>工作项</span>
+            <span>原方式</span>
+            <span>咨询后建议方式</span>
+            <span>价值</span>
+          </div>
+          <div class="table-row" role="row">
+            <span data-label="工作项">二维节点出图</span>
+            <span data-label="原方式">Revit 内重画，细部受限</span>
+            <span data-label="咨询后建议方式">CAD 保真导入 + Revit 二维补充</span>
+            <span data-label="价值">减少重画，保持图纸质量</span>
+          </div>
+          <div class="table-row" role="row">
+            <span data-label="工作项">标准幕墙建模</span>
+            <span data-label="原方式">逐步创建、手动分格</span>
+            <span data-label="咨询后建议方式">路径 + 模板 + 自动分格</span>
+            <span data-label="价值">降低重复操作</span>
+          </div>
+          <div class="table-row" role="row">
+            <span data-label="工作项">方案调整</span>
+            <span data-label="原方式">手动返工检查</span>
+            <span data-label="咨询后建议方式">修改规则后重新应用</span>
+            <span data-label="价值">减少漏改和不一致</span>
+          </div>
+        </div>
+      </section>
+
+      <section id="deliverables" class="section-shell deliver-section">
+        <div class="section-title">
+          <p class="eyebrow">05 · 顾问交付与沉淀</p>
+          <h2>本次工作不是一次性救火，而是把项目经验沉淀成团队可持续使用的方法、资源和工具。</h2>
+        </div>
+        <div class="deliver-grid">
+          <article>
+            <h3>现场咨询</h3>
+            <p>参与实际建模与出图，识别设计师在 Revit 二维表达和三维翻模中的真实阻塞点。</p>
+          </article>
+          <article>
+            <h3>技术方案</h3>
+            <p>总结 CAD 节点导入策略、Revit 补充表达边界，以及适合幕墙正向设计的插件路线。</p>
+          </article>
+          <article>
+            <h3>定制开发</h3>
+            <p>承担 Revit-CW-plugin 插件开发，采用基于 AI 的 Vibe Coding 方式快速迭代，提供参数面板、规则模板、项目资源扫描和自动生成能力。</p>
+          </article>
+          <article>
+            <h3>团队资产</h3>
+            <p>推动二维表达族资源、三维建模插件、幕墙系统模板、分格规则和素材库索引的积累。</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <span>上海院 x 吴宗谚</span>
+      <span>CAD 表达 · Revit 建模 · AI Vibe Coding 插件开发 · 团队增效</span>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
