@@ -156,6 +156,56 @@ h3 {
   margin-top: 34px;
 }
 
+.part-switch {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 30px 0 4px;
+}
+
+.part-card {
+  display: flex;
+  min-height: 126px;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  padding: 18px;
+  border: 1px solid rgba(23, 33, 36, 0.16);
+  color: var(--ink);
+  text-decoration: none;
+  background: rgba(255, 250, 240, 0.78);
+  box-shadow: 0 14px 34px rgba(38, 34, 28, 0.08);
+}
+
+.part-card span {
+  color: var(--coral);
+  font-size: 13px;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.part-card strong {
+  font-size: 22px;
+}
+
+.part-card em {
+  color: var(--muted);
+  font-size: 14px;
+  font-style: normal;
+}
+
+.part-card.is-current {
+  color: #fff;
+  border-color: transparent;
+  background: var(--ink);
+}
+
+.part-card.is-current span,
+.part-card.is-current em {
+  color: rgba(255, 255, 255, 0.78);
+}
+
 .primary-action,
 .secondary-action {
   display: inline-flex;
@@ -721,6 +771,14 @@ ul {
   .primary-action,
   .secondary-action {
     width: 100%;
+  }
+
+  .part-switch {
+    grid-template-columns: 1fr;
+  }
+
+  .part-card {
+    min-height: 108px;
   }
 
   .hero-visual {
