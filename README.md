@@ -27,6 +27,12 @@
 <img width="7831" height="5038" alt="88a8a10fa57ae087e59f35f596efb6f9" src="https://github.com/user-attachments/assets/d82ef1f3-a350-414c-b903-9f2ab0a4f003" />
 
 ---
+### 🧭 页面署名与共享样式约定
+- `shared-site.css` 只维护跨页面一致的站点框架：Header、Footer、移动端菜单、基础签名样式与响应式规则。
+- 项目归属不在共享样式中写死。每个 HTML 页面单独配置客户单位、合作单位、承接主体与个人署名。
+- 推荐署名字段：`clientOrg`（客户/服务对象）、`partnerOrg`（合作单位，可选）、`deliveryOrg`（承接主体）、`authorName`（负责人）、`authorTagline`（个人能力定位）。
+- 当前 Disney 幕墙系列使用“上海建筑设计研究院有限公司 x 上海开诚建设工程咨询有限公司”；其他项目可按实际关系替换为 OPC、达人集团或其他合作主体。
+---
 
 ### 📬 联系与合作
 * **负责人**: 吴宗谚 (Thomas Wu)

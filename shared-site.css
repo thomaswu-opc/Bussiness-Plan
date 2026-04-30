@@ -293,3 +293,27 @@
     font-size: 11px;
   }
 }
+/* Project attribution primitives: content stays page-specific. */
+.project-attribution,
+.project-signature {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.project-attribution[data-client]::before {
+  content: attr(data-client);
+}
+
+.project-attribution[data-delivery]::after {
+  content: " × " attr(data-delivery);
+}
+
+.project-role-label {
+  color: var(--site-muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
