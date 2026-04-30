@@ -1,5 +1,21 @@
+const toggle = document.querySelector(".nav-toggle");
+const links = [...document.querySelectorAll(".site-nav a")];
+
+if (toggle) {
+  toggle.addEventListener("click", () => {
+    const isOpen = document.body.classList.toggle("nav-open");
+    toggle.setAttribute("aria-expanded", String(isOpen));
+  });
+}
+
+links.forEach((link) => {
+  link.addEventListener("click", () => {
+    document.body.classList.remove("nav-open");
+    if (toggle) toggle.setAttribute("aria-expanded", "false");
+  });
+});
+
 const sections = [...document.querySelectorAll("main section[id]")];
-const links = [...document.querySelectorAll(".nav a")];
 
 const observer = new IntersectionObserver(
   (entries) => {
