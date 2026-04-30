@@ -1272,3 +1272,33 @@ ul {
     padding: 0 10px;
   }
 }
+/* ===== Controlled Brand Wrapping ===== */
+.site-brand .brand-line,
+.site-brand .brand-separator {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .unified-header .site-brand {
+    display: grid;
+    gap: 2px;
+    line-height: 1.18;
+    white-space: normal;
+    text-overflow: clip;
+  }
+
+  .site-brand .brand-line {
+    display: block;
+    white-space: nowrap;
+  }
+
+  .site-brand .brand-separator {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .unified-header .site-brand {
+    font-size: 11px;
+  }
+}
