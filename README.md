@@ -10,7 +10,8 @@
 | 2026-04-08 | **资产盘活领域五位一体智慧平台** | AI / 资产运营 | `Active` | [🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/asset-revitalization-ai-bp "达人建设 x 吴宗谚") |
 | 2026-04-21 | **CAD-IFC 图模一致性快速审查方案** | BIM / 自动化 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/cad-ifc-review-executive-brief "开诚咨询 x 吴宗谚") |
 | 2026-04-25 | **数字孪生智慧决策系统 · P0至三阶段软硬一体建设方案** | AI / 智慧系统 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/enterprise-ai-local-deployment-three-stage-hardware-construction-plan.html "达人集团 x 吴宗谚") |
-| 2026-04-27 | **Revit 正向设计 幕墙节点表达与建模提效咨询方案** | BIM / 幕墙正向设计 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/report-site/index.html#deliverables "上海院 x 吴宗谚") |
+| 2026-04-27 | **Part 1｜Revit 正向设计 幕墙节点表达与建模提效咨询方案** | BIM / 幕墙正向设计 / 策划 | `Active` |[🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/report-site/index.html#deliverables "上海院 x 吴宗谚") |
+| 2026-04-30 | **Part 2｜幕墙二维表达资源标准化实操路径** | BIM / CAD-Revit 标准化 | `Active` | [🔗 点击预览](https://thomaswu-opc.github.io/Bussiness-Plan/cwp2/index.html "上海院 x 吴宗谚") |
 | 2026-04-xx | **外部索引-实时热点信息捕捉方案** | 爬虫 / 自动化 | `Pending` | 请稍后 |
 
 
@@ -30,3 +31,4 @@
 ### 📬 联系与合作
 * **负责人**: 吴宗谚 (Thomas Wu)
 * **联系方式**: 13162253301/ thomaswu16@163.com
+

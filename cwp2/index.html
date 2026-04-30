@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Part 2｜Disney 幕墙 BIM 二维资源实操路径</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="logo text-logo" href="#top" aria-label="返回顶部">上海建筑设计研究院有限公司 x 上海开诚咨询有限公司</a>
+      <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">菜单</button>
+      <nav class="nav-links" aria-label="主导航">
+        <a href="#background">背景目标</a>
+        <a href="#definition">定义问答</a>
+        <a href="#workflow">实施流程</a>
+        <a href="#mapping">映射标准</a>
+        <a href="#tech-route">技术路线</a>
+        <a href="#summary">总结</a>
+        <a class="nav-part-link" href="../report-site/index.html" target="_blank" rel="noopener">Part 1 策划</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Part 2 · Operation Path</p>
+          <h1>幕墙二维表达资源标准化实操路径</h1>
+          <p class="hero-lead">
+            本篇作为 Part 2，侧重具体实操：CAD 预处理、Revit 二次处理、映射表配置、资源沉淀与技术路线决策。
+            Part 1 侧重整体策划与项目背景，两篇共同组成完整汇报方案。
+          </p>
+          <div class="part-switch reveal" aria-label="Part 1 和 Part 2 跳转">
+            <a class="part-card" href="../report-site/index.html" target="_blank" rel="noopener">
+              <span>Part 1</span>
+              <strong>策划方案</strong>
+              <em>项目背景 / 目标 / 整体规划</em>
+            </a>
+            <a class="part-card is-current" href="#top">
+              <span>Part 2</span>
+              <strong>实操路径</strong>
+              <em>CAD-Revit 流程 / 映射 / 资源沉淀</em>
+            </a>
+          </div>
+          <div class="hero-actions">
+            <a class="btn primary" href="#workflow">查看实施流程</a>
+            <a class="btn secondary" href="#mapping">查看映射逻辑</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel visual-panel reveal" aria-label="核心目标示意图">
+          <div class="panel-title">本次试点核心路径</div>
+          <svg class="workflow-illustration" viewBox="0 0 520 360" role="img" aria-label="CAD 到 Revit 再到资源库的工作流示意图">
+            <defs>
+              <linearGradient id="heroBlue" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#1f6f9f" />
+                <stop offset="1" stop-color="#4bb6b7" />
+              </linearGradient>
+              <linearGradient id="heroGold" x1="0" x2="1" y1="0" y2="1">
+                <stop offset="0" stop-color="#f2c76b" />
+                <stop offset="1" stop-color="#c7953c" />
+              </linearGradient>
+              <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="18" stdDeviation="14" flood-color="#0f2742" flood-opacity="0.18" />
+              </filter>
+            </defs>
+            <rect x="24" y="28" width="472" height="304" rx="32" fill="#f7fbfb" stroke="#dbe3ec" />
+            <path d="M68 253 C 148 180, 205 224, 270 158 S 399 82, 455 116" fill="none" stroke="#dbe3ec" stroke-width="10" stroke-linecap="round" />
+            <path d="M68 253 C 148 180, 205 224, 270 158 S 399 82, 455 116" fill="none" stroke="url(#heroBlue)" stroke-width="4" stroke-linecap="round" stroke-dasharray="12 12" />
+
+            <g filter="url(#softShadow)">
+              <rect x="54" y="190" width="118" height="86" rx="22" fill="#ffffff" />
+              <path d="M78 248 h68 M78 228 h44 M78 208 h68" stroke="#1f6f9f" stroke-width="6" stroke-linecap="round" />
+              <text x="113" y="306" text-anchor="middle" fill="#17202a" font-size="22" font-weight="800">CAD</text>
+            </g>
+
+            <g filter="url(#softShadow)">
+              <rect x="201" y="128" width="118" height="86" rx="22" fill="#ffffff" />
+              <circle cx="230" cy="171" r="13" fill="url(#heroGold)" />
+              <circle cx="260" cy="171" r="13" fill="url(#heroBlue)" />
+              <circle cx="290" cy="171" r="13" fill="#0f2742" />
+              <text x="260" y="246" text-anchor="middle" fill="#17202a" font-size="22" font-weight="800">Mapping</text>
+            </g>
+
+            <g filter="url(#softShadow)">
+              <rect x="348" y="72" width="118" height="86" rx="22" fill="#ffffff" />
+              <path d="M377 132 l31 -42 l31 42 Z" fill="url(#heroBlue)" opacity="0.95" />
+              <rect x="393" y="115" width="30" height="25" rx="5" fill="#ffffff" opacity="0.92" />
+              <text x="407" y="188" text-anchor="middle" fill="#17202a" font-size="22" font-weight="800">Revit</text>
+            </g>
+
+            <g>
+              <rect x="179" y="278" width="160" height="34" rx="17" fill="#0f2742" />
+              <text x="259" y="301" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="800">Reusable Detail Library</text>
+            </g>
+          </svg>
+          <ol class="mini-flow compact">
+            <li><span>01</span> CAD 图元筛选与预处理</li>
+            <li><span>02</span> DWG 导入与 Revit 二次处理</li>
+            <li><span>03</span> 形成可复用 Detail 资源</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section id="background" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">01 · Project Context</p>
+          <h2>项目背景与阶段目标</h2>
+          <p>
+            当前服务对象为 Disney 幕墙部门。目标不是简单把 CAD 图纸搬进 Revit，
+            而是建立一套可验证、可复用、可推广的二维表达资源标准化路径。
+          </p>
+        </div>
+
+        <div class="card-grid three">
+          <article class="card reveal">
+            <span class="tag">P0</span>
+            <h3>验证路径可行性</h3>
+            <p>验证 CAD 图元经预处理后导入 Revit，并保持线型、线宽、线段及填充表达一致的可行性。</p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">P1</span>
+            <h3>沉淀二维 Detail 资源</h3>
+            <p>形成可编辑、可参数化、可嵌套的 Revit 二维组资源，降低后续项目重复建模成本。</p>
+          </article>
+          <article class="card reveal">
+            <span class="tag">P2</span>
+            <h3>推广到建筑立面专业</h3>
+            <p>以幕墙作为试点，验证后向建筑立面详图扩展，形成上海院可持续复用的项目资产。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="definition" class="section alt">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">02 · Definition & Q&A</p>
+          <h2>核心定义与常见问题</h2>
+          <p>先把术语和显示逻辑说清楚，后续的 CAD 处理、Revit 导入和映射关系才不会混乱。</p>
+        </div>
+
+        <div class="definition-layout">
+          <div class="term-list reveal">
+            <div class="term-item">
+              <h3>Object Style</h3>
+              <p>Revit 项目环境中的底层对象样式，用于控制类别级别的线型、线宽、材质与显示基础。</p>
+            </div>
+            <div class="term-item">
+              <h3>Import Category</h3>
+              <p>CAD 导入后在 Revit 中形成的导入类别，常在 VV/VG 可见性设置中参与显示控制。</p>
+            </div>
+            <div class="term-item">
+              <h3>Nested Group</h3>
+              <p>可复用的嵌套组资源，类似 CAD 块的复用逻辑，但需要满足 Revit 的对象与显示规则。</p>
+            </div>
+            <div class="term-item">
+              <h3>Layer Mapping</h3>
+              <p>CAD 图层、线型、线宽与 Revit 对象样式、导入类别之间的一一对应关系。</p>
+            </div>
+          </div>
+
+          <div class="qa-stack">
+            <article class="qa-card reveal">
+              <h3>Q1：为什么 CAD 导入 Revit 后 Hatch 会变化？</h3>
+              <p>
+                如果填充样式不需要跟着视口比例变动，可以在 CAD 中炸开成为线段，
+                增加在 Revit 里显示的稳定性；如果需要与视口比例联动，
+                则需与 Revit 中的填充进行映射关系配置。
+              </p>
+            </article>
+            <article class="qa-card reveal">
+              <h3>Q2：为什么线型、线宽、线段会变化？</h3>
+              <p>
+                CAD 图层属性与 Revit 对象样式、导入类别、视图可见性之间并不是天然等价关系。
+                如果未建立标准 Mapping Table，导入后常出现线型替换、线宽错位或显示优先级混乱。
+              </p>
+            </article>
+            <article class="qa-card reveal">
+              <h3>Q3：为什么视图中看到的线段与对象样式不一致？</h3>
+              <p>
+                Revit 的显示控制存在层级优先级：对象样式是底层逻辑，视图可见性 VV/VG、导入类别、
+                过滤器、实例覆盖等上层设置都会继续影响最终显示结果。必须把这些层级关系提前规划清楚。
+              </p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">03 · Implementation Workflow</p>
+          <h2>从 CAD 到 Revit 的六步实施流程</h2>
+          <p>本流程强调具体做法，而不是概括性描述。尤其是 Hatch 炸开、块中块判断、Revit 二次 explode 与 0.8mm 刀角限制。</p>
+        </div>
+
+        <div class="timeline">
+          <article class="step reveal">
+            <span class="step-index">STEP 1</span>
+            <h3>CAD 图元识别与筛选</h3>
+            <ul>
+              <li>基于节点图、墙身图和大样图，判断哪些图元需要进入 Revit 二维表达。</li>
+              <li>将 CAD 二维图元与三维结构模型、建筑边界进行比对，识别不准确的位置。</li>
+              <li>在 Revit 中建立对应 Detail / Drawing 视口，再导入对应 CAD 图元。</li>
+            </ul>
+          </article>
+
+          <article class="step reveal">
+            <span class="step-index">STEP 2</span>
+            <h3>CAD 预处理：图层、线型、线宽、填充</h3>
+            <ul>
+              <li>先规划 CAD 图层、线型、线宽及填充图案，保证后续可映射。</li>
+              <li>有填充样式的块必须在 CAD 中炸开到线段级别，尤其是 Hatch 填充。</li>
+              <li>块中块需要分级判断：有复杂填充的部分炸开；没有复杂填充的部分可保留为块。</li>
+              <li>必须保留 CAD 原始表达逻辑，避免过度简化导致 Revit 中无法还原图面效果。</li>
+            </ul>
+          </article>
+
+          <article class="step reveal warning-step">
+            <span class="step-index">STEP 3</span>
+            <h3>0.8mm 刀角与 Revit 几何下限</h3>
+            <ul>
+              <li>幕墙高精度加工图中常存在小于 0.8mm 的刀角或极短线段。</li>
+              <li>这不是显示或打印问题，而是 Revit 几何计算逻辑中无法生成过小线段的问题。</li>
+              <li>小于 0.8mm 的刀角不应在 CAD 中随意炸开，应在 CAD 环节提前规划并保留必要表达。</li>
+            </ul>
+          </article>
+
+          <article class="step reveal">
+            <span class="step-index">STEP 4</span>
+            <h3>导入 Revit 前建立映射关系</h3>
+            <ul>
+              <li>建立 CAD Layer → Revit Object Style / Import Category 的 Mapping Table。</li>
+              <li>用 Excel 记录线型、线宽、图层、填充、组资源命名与 Revit 显示结果。</li>
+              <li>统一命名规则，避免后期改一个设置却看不到结果。</li>
+            </ul>
+          </article>
+
+          <article class="step reveal">
+            <span class="step-index">STEP 5</span>
+            <h3>导入 Revit 并进行二次 explode</h3>
+            <ul>
+              <li>DWG 导入 Revit 后，仍然只是一个导入对象，需要继续处理。</li>
+              <li>在 Revit 内对需要拾取、编辑、参数化的线段再次 explode。</li>
+              <li>将可编辑线段整理为组资源、强图样式资源或后续可嵌套资源。</li>
+            </ul>
+          </article>
+
+          <article class="step reveal">
+            <span class="step-index">STEP 6</span>
+            <h3>Revit 资源沉淀与项目级复用</h3>
+            <ul>
+              <li>将稳定 Detail 表达沉淀为可复用二维资源。</li>
+              <li>对资源进行参数化、嵌套与分级命名，形成可维护资产。</li>
+              <li>剩余约 20% 的精修工作可通过遮罩、线段、填充、标注组等方式补充完成。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="mapping" class="section alt">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">04 · Mapping System</p>
+          <h2>三层级映射标准</h2>
+          <p>CAD、映射表与 Revit 项目环境必须同时规划，否则后续支持会非常混乱。</p>
+        </div>
+
+        <div class="diagram-strip mapping-diagram reveal" aria-label="三层级映射标准示意图">
+          <div class="diagram-node cad-node">
+            <span>CAD</span>
+            <strong>图层 / 线型 / 填充</strong>
+          </div>
+          <div class="diagram-arrow">→</div>
+          <div class="diagram-node table-node">
+            <span>Excel</span>
+            <strong>Mapping Table</strong>
+          </div>
+          <div class="diagram-arrow">→</div>
+          <div class="diagram-node revit-node">
+            <span>Revit</span>
+            <strong>Object Style / VV-VG</strong>
+          </div>
+        </div>
+
+        <div class="mapping-grid">
+          <article class="mapping-card reveal">
+            <h3>Layer 1：CAD 资源层</h3>
+            <p>控制图层、线型、线宽、填充、块与块中块的拆分规则。</p>
+            <ul>
+              <li>Hatch 炸开至线段</li>
+              <li>复杂填充分级拆解</li>
+              <li>无复杂填充保留为块</li>
+            </ul>
+          </article>
+          <article class="mapping-card reveal">
+            <h3>Layer 2：Mapping Table</h3>
+            <p>通过 Excel 记录 CAD 与 Revit 的资源对应关系。</p>
+            <ul>
+              <li>CAD Layer → Revit Category</li>
+              <li>CAD Lineweight → Revit Line Weight</li>
+              <li>CAD Linetype → Revit Line Pattern</li>
+            </ul>
+          </article>
+          <article class="mapping-card reveal">
+            <h3>Layer 3：Revit 资源层</h3>
+            <p>在 Revit 项目环境中统一对象样式、导入类别、组资源与视图控制。</p>
+            <ul>
+              <li>Object Style 底层控制</li>
+              <li>VV/VG 视图级控制</li>
+              <li>Group / Nested Group 资源复用</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="callout reveal">
+          <div>
+            <strong>目标工作比例</strong>
+            <p>通过 CAD → Revit 标准导入路径完成约 80% 的基础表达，剩余 20% 由 Revit 内遮罩、线段、填充、标注组完成精修。</p>
+          </div>
+          <span>80% + 20%</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="plan" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">05 · Resource Plan</p>
+          <h2>整体规划与后续提升</h2>
+          <p>本项目不只是一次图面转换，而是一次资源、经验和团队能力的沉淀。</p>
+        </div>
+
+        <div class="plan-list">
+          <article class="plan-card reveal">
+            <span>阶段一</span>
+            <h3>标准二维资源沉淀</h3>
+            <p>沉淀节点、墙身、大样、标注组、遮罩与 Detail 组件。</p>
+          </article>
+          <article class="plan-card reveal">
+            <span>阶段二</span>
+            <h3>Excel 映射表标准化</h3>
+            <p>记录 CAD 与 Revit 的线型、线宽、图层、填充及资源命名规则。</p>
+          </article>
+          <article class="plan-card reveal">
+            <span>阶段三</span>
+            <h3>Revit 插件素材库开发</h3>
+            <p>基于 Revit 二次开发，将二维图源与线型线宽设置快速匹配为可调用素材库。</p>
+          </article>
+          <article class="plan-card reveal">
+            <span>阶段四</span>
+            <h3>推广至建筑立面详图</h3>
+            <p>以幕墙为试点确认可行性后，推广到建筑立面详图专业。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tech-route" class="section alt">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">06 · Technical Route</p>
+          <h2>技术路线补充与工具选型说明</h2>
+          <p>这一部分不是软件优劣比较，而是解释为什么当前路径选择 Revit 为主、Rhino 为辅。</p>
+        </div>
+
+        <div class="tool-map reveal" aria-label="Revit 与 Rhino 技术路线关系图">
+          <div class="tool-bubble rhino">
+            <span>Rhino / Grasshopper</span>
+            <strong>复杂几何与工业化深化</strong>
+          </div>
+          <div class="tool-bridge">
+            <span>补充协同</span>
+            <i>Rhino Inside Revit</i>
+          </div>
+          <div class="tool-bubble revit">
+            <span>Revit</span>
+            <strong>BIM 整合、碰撞与交付语言</strong>
+          </div>
+        </div>
+
+        <div class="route-grid">
+          <article class="route-card reveal">
+            <h3>为什么当前路径以 Revit 为主？</h3>
+            <p>
+              当前 BIM 实施路径的核心目标，是实现跨专业统一模型整合、统一坐标、统一碰撞检查与统一交付语言。
+              因此二维资源、节点表达及标准 Detail 仍需最终沉淀于 Revit 环境中。
+            </p>
+          </article>
+          <article class="route-card reveal">
+            <h3>Rhino / Grasshopper 的角色</h3>
+            <p>
+              幕墙及木墙高精度加工图通常更适合在 Rhino / Grasshopper 环境中完成，尤其是复杂几何、曲面与工业化深化表达。
+              本方案将 Rhino 作为补充设计工具，而非替代 Revit 的 BIM 整合平台。
+            </p>
+          </article>
+          <article class="route-card warning reveal">
+            <h3>Rhino Inside Revit 补充说明</h3>
+            <p>
+              Rhino Inside Revit 可实现 Rhino 模型向 Revit 的映射，但在大型或复杂图源场景下，可能存在导入后编辑困难、
+              参数延续性不足、大量图元导致 Revit 卡顿、后续设计变更维护成本高等问题。
+            </p>
+          </article>
+        </div>
+
+        <div class="decision reveal">
+          <h3>当前技术决策</h3>
+          <p>Rhino 路线适用于复杂工业化深化；Revit 路线适用于 BIM 整合与标准交付。当前项目以 Revit 资源沉淀为核心目标，Rhino 作为补充设计工具使用。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="summary" class="section summary-section">
+      <div class="container summary-card reveal">
+        <p class="eyebrow">07 · Summary</p>
+        <h2>总结：Part 2 从实操路径沉淀长期可复用资产</h2>
+        <p>
+          本方案以 Disney 幕墙专业为试点，通过 CAD 预处理、映射表标准化、Revit 二次处理与资源库沉淀，
+          将一次项目支持转化为可持续复用的 BIM 标准化路径。后续可继续推广至建筑立面详图专业，
+          提升团队 Revit 使用能力、项目协同效率与上海院整体数字资产价值。
+        </p>
+        <div class="summary-links">
+          <a href="../report-site/index.html" target="_blank" rel="noopener">返回 Part 1｜策划方案</a>
+          <a href="#top">回到 Part 2｜实操路径顶部</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner footer-layout">
+      <div class="footer-brand">
+        <span>上海建筑设计研究院有限公司 x 上海开诚咨询有限公司</span>
+        <strong>上海院 x 吴宗谚</strong>
+      </div>
+      <div class="footer-signature" aria-label="个人签名描述">
+        <span class="signature-icon">◆</span>
+        <em>专注于建设行业数字化转型</em>
+      </div>
+      <a href="#top">返回顶部</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

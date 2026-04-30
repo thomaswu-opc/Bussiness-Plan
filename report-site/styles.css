@@ -744,3 +744,20 @@ ul {
     gap: 6px;
   }
 }
+
+.part2-nav,
+.footer-part-link {
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.part2-action {
+  border-color: var(--coral);
+  color: var(--ink);
+  font-weight: 800;
+}
+
+.footer-part-link {
+  color: var(--coral);
+  text-decoration: none;
+}
