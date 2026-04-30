@@ -7,19 +7,25 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="logo text-logo" href="#top" aria-label="返回顶部">上海建筑设计研究院有限公司 x 上海开诚咨询有限公司</a>
+  <header class="site-header unified-header" aria-label="页面导航">
+    <div class="header-container">
+      <a class="site-brand" href="#top" aria-label="返回 Part 2 顶部">上海建筑设计研究院有限公司 x 上海开诚咨询有限公司</a>
       <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">菜单</button>
-      <nav class="nav-links" aria-label="主导航">
+      <nav class="site-nav nav-links" aria-label="Part 2 页面导航">
         <a href="#background">背景目标</a>
         <a href="#definition">定义问答</a>
         <a href="#workflow">实施流程</a>
         <a href="#mapping">映射标准</a>
         <a href="#tech-route">技术路线</a>
         <a href="#summary">总结</a>
-        <a class="nav-part-link" href="../report-site/index.html" target="_blank" rel="noopener">Part 1 策划</a>
       </nav>
+      <details class="part-menu">
+        <summary>章节切换</summary>
+        <div class="part-menu-panel">
+          <a href="../report-site/index.html"><span>Part 1</span><strong>策划方案</strong><em>项目背景 / 目标 / 整体规划</em></a>
+          <a class="is-current" href="#top"><span>Part 2</span><strong>实操路径</strong><em>CAD-Revit 流程 / 映射 / 资源沉淀</em></a>
+        </div>
+      </details>
     </div>
   </header>
 
@@ -435,8 +441,8 @@
     </section>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-inner footer-layout">
+  <footer class="site-footer unified-footer">
+    <div class="footer-container">
       <div class="footer-brand">
         <span>上海建筑设计研究院有限公司 x 上海开诚咨询有限公司</span>
         <strong>上海院 x 吴宗谚</strong>
@@ -445,7 +451,10 @@
         <span class="signature-icon">◆</span>
         <em>专注于建设行业数字化转型</em>
       </div>
-      <a href="#top">返回顶部</a>
+      <div class="footer-links">
+        <a href="#top">返回顶部</a>
+        <a href="../report-site/index.html">Part 1｜策划方案</a>
+      </div>
     </div>
   </footer>
 
