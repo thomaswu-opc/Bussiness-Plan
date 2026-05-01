@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Part 3｜基于 Revit 的幕墙正向设计插件</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../shared-site.css" />
+</head>
+<body>
+  <header class="site-header unified-header" aria-label="页面导航">
+    <div class="header-container">
+      <a class="site-brand" href="#top" aria-label="返回 Part 3 顶部"><span class="brand-line">OPC 自研插件</span><span class="brand-separator"> x </span><span class="brand-line">吴宗谚</span></a>
+      <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">菜单</button>
+      <nav class="site-nav nav-links" aria-label="Part 3 页面导航">
+        <a href="#positioning">定位</a>
+        <a href="#pain">痛点</a>
+        <a href="#workflow">流程</a>
+        <a href="#capability">能力</a>
+        <a href="#architecture">架构</a>
+        <a href="#roadmap">路线</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Part 3 · Revit Curtain Wall Plugin</p>
+          <h1>基于 Revit 的幕墙正向设计插件</h1>
+          <p class="hero-lead">本篇作为 Part 3，聚焦自研插件成品路径：以 Revit 原生 Curtain Wall 为基础，将幕墙分格、面板替换、龙骨布置、模板复用和设计变更，整理成可预览、可配置、可落地的本地化工具。</p>
+          <div class="part-switch reveal" aria-label="Part 1、Part 2 和 Part 3 跳转">
+            <a class="part-card" href="../report-site/index.html"><span>Part 1</span><strong>策划方案</strong><em>项目背景 / 目标拆解 / 整体规划</em></a>
+            <a class="part-card" href="../cwp2/index.html"><span>Part 2</span><strong>实操路径</strong><em>CAD-Revit 流程 / 映射 / 资源沉淀</em></a>
+            <a class="part-card is-current" href="#top"><span>Part 3</span><strong>自研插件</strong><em>Revit API / 绿色部署 / 提效工具</em></a>
+          </div>
+          <div class="hero-actions"><a class="btn primary" href="#workflow">查看插件流程</a><a class="btn secondary" href="#value">查看效率价值</a></div>
+        </div>
+        <aside class="hero-panel reveal" aria-label="Revit 幕墙插件示意图">
+          <div class="panel-kicker">Pure Local Add-in</div>
+          <svg class="plugin-visual" viewBox="0 0 520 390" role="img" aria-label="本地 Revit 插件从规则到幕墙模型的生成路径">
+            <defs><linearGradient id="steelBlue" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#163a59"/><stop offset="1" stop-color="#2a8ca0"/></linearGradient><linearGradient id="warmGold" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#f1cb73"/><stop offset="1" stop-color="#c7953c"/></linearGradient><filter id="cardShadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="20" stdDeviation="18" flood-color="#0f2742" flood-opacity="0.18"/></filter></defs>
+            <rect x="24" y="26" width="472" height="338" rx="34" fill="#f8fbfa" stroke="#dbe3ec"/>
+            <g filter="url(#cardShadow)"><rect x="64" y="70" width="158" height="238" rx="24" fill="#fff"/><text x="143" y="112" text-anchor="middle" fill="#0f2742" font-size="22" font-weight="900">参数面板</text><rect x="92" y="139" width="102" height="14" rx="7" fill="#dbe3ec"/><rect x="92" y="171" width="76" height="14" rx="7" fill="#dbe3ec"/><rect x="92" y="203" width="96" height="14" rx="7" fill="#dbe3ec"/><rect x="92" y="242" width="102" height="38" rx="19" fill="url(#steelBlue)"/><text x="143" y="267" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">Preview</text></g>
+            <path d="M234 190 C267 166 284 166 320 190" fill="none" stroke="url(#warmGold)" stroke-width="8" stroke-linecap="round" stroke-dasharray="16 16"/>
+            <g filter="url(#cardShadow)"><rect x="326" y="70" width="134" height="238" rx="24" fill="#fff"/><text x="393" y="112" text-anchor="middle" fill="#0f2742" font-size="22" font-weight="900">Curtain Wall</text><rect x="356" y="138" width="74" height="134" rx="8" fill="#eaf3f4" stroke="#2a8ca0" stroke-width="4"/><path d="M381 138v134 M405 138v134 M356 181h74 M356 225h74" stroke="#2a8ca0" stroke-width="4"/><circle cx="356" cy="138" r="5" fill="#c7953c"/><circle cx="430" cy="272" r="5" fill="#c7953c"/></g>
+            <g><rect x="79" y="325" width="86" height="30" rx="15" fill="#0f2742"/><text x="122" y="345" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">无后台</text><rect x="177" y="325" width="86" height="30" rx="15" fill="#1f6f9f"/><text x="220" y="345" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">无联网</text><rect x="275" y="325" width="86" height="30" rx="15" fill="#4bb6b7"/><text x="318" y="345" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">纯自研</text><rect x="373" y="325" width="86" height="30" rx="15" fill="#c7953c"/><text x="416" y="345" text-anchor="middle" fill="#fff" font-size="13" font-weight="800">可客制</text></g>
+          </svg>
+        </aside>
+      </div>
+    </section>
+
+    <section id="positioning" class="section"><div class="container"><div class="section-heading reveal"><p class="eyebrow">01 · Product Positioning</p><h2>不是通用平台，而是直击幕墙 Revit 建模效率痛点的绿色自研插件。</h2><p>插件围绕“正向设计”服务：在设计早期就把幕墙系统、标高约束、分格规则、面板规则和龙骨资源组织起来，直接生成可继续编辑的 Revit 原生幕墙模型。</p></div><div class="principle-grid"><article class="principle-card reveal"><span>01</span><h3>纯自研</h3><p>代码、规则引擎、WPF 参数面板、模板结构与本地资源扫描均按实际幕墙流程自主设计。</p></article><article class="principle-card reveal"><span>02</span><h3>绿色部署</h3><p>面向 Revit Add-in 本地加载路径，MVP 可通过 Add-In Manager 加载 DLL，不绑定复杂安装器。</p></article><article class="principle-card reveal"><span>03</span><h3>无后台无联网</h3><p>按本地插件交付取向设计，不依赖云端后台或外部网络，项目数据与族库资源留在本机/企业环境内。</p></article><article class="principle-card reveal"><span>04</span><h3>客制化</h3><p>可按企业样板、幕墙系统、族库目录、命名标准、分格规则与交付习惯定制模板和资源映射。</p></article></div></div></section>
+
+    <section id="pain" class="section alt"><div class="container pain-layout"><div class="section-heading reveal"><p class="eyebrow">02 · Efficiency Pain Points</p><h2>真正耗时间的不是“画一面墙”，而是重复配置规则、重复替换构件、重复返工检查。</h2></div><div class="pain-stack"><article class="pain-item reveal"><strong>分格重复</strong><p>长立面、多层重复立面需要反复添加 Curtain Grid，间距调整后还要逐段检查。</p></article><article class="pain-item reveal"><strong>面板替换慢</strong><p>普通玻璃、开启扇、背衬板、特殊板块需要按区域批量替换，手动操作容易漏改。</p></article><article class="pain-item reveal"><strong>龙骨不统一</strong><p>竖梃、横梁、边框类型如果依赖人工逐条设置，项目越大越容易出现不一致。</p></article><article class="pain-item reveal"><strong>设计变更重</strong><p>方案调整后，原有分格、面板和龙骨需要重新整理，重复劳动吞掉大量设计时间。</p></article></div></div></section>
+
+    <section id="workflow" class="section workflow-section"><div class="container"><div class="section-heading reveal"><p class="eyebrow">03 · Forward Design Workflow</p><h2>从“手动逐项建模”转为“选择对象、配置规则、预览确认、生成原生幕墙”。</h2></div><div class="flowline"><article class="flow-step reveal"><span>1</span><h3>选择输入对象</h3><p>选择直线 Model Line、普通墙或现有直线 Curtain Wall，作为插件生成或编辑的基础。</p></article><article class="flow-step reveal"><span>2</span><h3>配置参数面板</h3><p>设置墙类型、底标高、高度、固定间距、面板规则、竖梃/横梁和边框类型。</p></article><article class="flow-step reveal"><span>3</span><h3>Preview 编辑</h3><p>预览分格，可添加、拖拽、删除网格线，支持尺寸输入、选择过滤和资源指派。</p></article><article class="flow-step reveal"><span>4</span><h3>生成原生模型</h3><p>调用 Revit API 创建或替换 Curtain Wall，生成网格、面板、龙骨与基础参数。</p></article><article class="flow-step reveal"><span>5</span><h3>摘要与日志</h3><p>输出生成摘要、跳过项和警告，便于设计师回到 Revit 中继续检查和深化。</p></article></div></div></section>
+
+    <section id="capability" class="section alt"><div class="container"><div class="section-heading reveal"><p class="eyebrow">04 · MVP Capability</p><h2>当前 MVP 聚焦标准直线幕墙，把最常见、最重复、最有提效价值的动作先打穿。</h2></div><div class="capability-grid"><article class="cap-card reveal"><h3>标准幕墙生成</h3><p>基于直线路径、标高和高度创建 Revit 原生 Curtain Wall，保留后续可编辑性。</p></article><article class="cap-card reveal"><h3>固定间距分格</h3><p>独立规则引擎计算分格线位置，再通过 CurtainGrid 写入 Revit 模型。</p></article><article class="cap-card reveal"><h3>面板规则</h3><p>支持面板类型字段、选择替换、背衬/特殊区域等基础规则沉淀。</p></article><article class="cap-card reveal"><h3>龙骨与边框</h3><p>支持内部竖梃、横梁及边框配置，边框可选择 None，减少不必要构件。</p></article><article class="cap-card reveal"><h3>模板与资源</h3><p>读取/保存样式 JSON，并扫描本地项目资源，为企业族库扩展预留接口。</p></article><article class="cap-card reveal"><h3>编辑既有幕墙</h3><p>可读取现有直线幕墙并进行再分格、资源重配和生成更新。</p></article></div></div></section>
+
+    <section id="value" class="section value-section"><div class="container value-grid"><div class="section-heading reveal"><p class="eyebrow">05 · Value</p><h2>效率收益来自把规则劳动产品化，而不是把一个按钮包装成插件。</h2><p>根据开发文档中的目标测算，标准办公立面可由 30-60 分钟压缩到 5-10 分钟；相似立面套用模板后，可节省 70%-90% 的重复配置时间。</p></div><div class="metric-board reveal"><div><strong>60%+</strong><span>标准幕墙创建时间目标降低</span></div><div><strong>70%+</strong><span>面板批量替换时间目标降低</span></div><div><strong>70-90%</strong><span>相似立面模板复用节省</span></div></div></div></section>
+
+    <section id="architecture" class="section alt"><div class="container"><div class="section-heading reveal"><p class="eyebrow">06 · Technical Architecture</p><h2>本地 Revit Add-in 架构：界面、规则、模板、资源和 Revit API 写入分层解耦。</h2></div><div class="architecture-map reveal"><div class="arch-node">WPF 参数面板</div><div class="arch-node">独立规则引擎</div><div class="arch-node">JSON 模板</div><div class="arch-node">本地族库/资源库</div><div class="arch-node highlight">Revit API Transaction</div><div class="arch-node">Native Curtain Wall</div></div><div class="tech-notes"><article class="tech-note reveal"><h3>技术栈</h3><p>C# / .NET Framework 4.8 / Revit 2024 API / WPF / JSON 模板 / Add-In Manager。</p></article><article class="tech-note reveal"><h3>关键 API</h3><p>Wall.Create、Wall.ChangeTypeId、CurtainGrid.AddGridLine、ChangePanelType、CurtainGridLine.AddMullions、TransactionGroup。</p></article><article class="tech-note reveal"><h3>资源结构</h3><p>本地 library 目录可组织 mullions、transoms、frames、panels、templates、grid-rules、panel-rules 和 facade-systems。</p></article></div></div></section>
+
+    <section id="roadmap" class="section roadmap-section"><div class="container"><div class="section-heading reveal"><p class="eyebrow">07 · Roadmap</p><h2>从标准直线幕墙 MVP，逐步扩展到模板批处理、异形立面和企业级定制交付。</h2></div><div class="roadmap"><article class="road-card done reveal"><span>Phase 1</span><h3>标准幕墙 MVP</h3><p>参数面板、Preview、固定间距分格、面板替换、龙骨/边框配置、日志与摘要。</p></article><article class="road-card reveal"><span>Phase 2</span><h3>模板与批处理</h3><p>企业模板沉淀、相似立面快速套用、批量面板规则和资源映射增强。</p></article><article class="road-card reveal"><span>Phase 3</span><h3>异形立面</h3><p>基于面选择、UV 网格、自适应构件和局部 DirectShape 的复杂立面生成路径。</p></article><article class="road-card reveal"><span>Phase 4-5</span><h3>深化与企业适配</h3><p>统计、检查、族库版本、企业样板、交付规范和项目级客制化能力。</p></article></div><div class="boundary reveal"><h3>边界说明</h3><p>MVP 当前面向标准直线幕墙，不替代施工深化节点、结构计算、Rhino/Grasshopper 复杂自由曲面流程。插件目标是优先解决 Revit 中高频、规则化、可复用的幕墙建模效率问题。</p></div></div></section>
+
+    <section id="summary" class="section summary-section"><div class="container summary-card reveal"><p class="eyebrow">08 · Summary</p><h2>总结：把幕墙建模经验封装为本地可控、可客制、可持续迭代的 Revit 工具资产。</h2><p>Part 3 将前两篇的策划与实操继续向工具化推进：用纯自研、本地绿色插件承接真实业务痛点，在不依赖后台、不依赖联网的前提下，把幕墙正向设计中的规则劳动沉淀为企业可复用能力。</p></div></section>
+  </main>
+
+  <footer class="site-footer unified-footer"><div class="footer-container"><div class="footer-brand"><span>OPC 自研 Revit 幕墙正向设计插件</span><strong>OPC x 吴宗谚</strong></div><div class="footer-signature" aria-label="个人签名描述"><span class="signature-icon">◆</span><em>专注于AI应用、定制开发、与建设行业数字化转型</em></div><div class="footer-links"><a href="#top">返回顶部</a></div></div></footer>
+  <script src="script.js"></script>
+</body>
+</html>
