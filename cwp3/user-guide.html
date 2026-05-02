@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>幕墙正向设计插件｜详情使用说明</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../shared-site.css" />
+</head>
+<body class="guide-page">
+  <header class="site-header unified-header" aria-label="页面导航">
+    <div class="header-container">
+      <a class="site-brand" href="./index.html" aria-label="返回 Part 3 主页面"><span class="brand-line">上海建筑设计研究院有限公司</span><span class="brand-separator"> x </span><span class="brand-line">上海开诚建设工程咨询有限公司</span></a>
+      <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">菜单</button>
+      <nav class="site-nav nav-links" aria-label="使用说明页面导航">
+        <a href="#install">安装</a><a href="#objects">对象</a><a href="#preview">预览</a><a href="#edit">编辑</a><a href="#generate">生成</a><a href="#faq">FAQ</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="guide-hero">
+      <div class="container guide-hero-grid">
+        <div class="reveal">
+          <p class="eyebrow">Part 3 Supplement · User Guide</p>
+          <h1>幕墙正向设计插件详情使用说明</h1>
+          <p class="hero-lead">本页是 Part 3 的附属说明，只面向插件使用者，说明安装、启动、预览编辑、模板预设、生成幕墙与常见问题。它不是 Part 4，也不是新的方案页。</p>
+          <div class="guide-actions"><a class="btn primary" href="./index.html">返回 Part 3 主页面</a><a class="btn secondary" href="#install">开始查看说明</a></div>
+        </div>
+        <aside class="guide-note reveal" aria-label="说明范围"><span>适用范围</span><strong>Revit 2024 标准直线幕墙</strong><p>支持直线模型线、普通直线墙、既有直线幕墙。不覆盖曲面、样条曲线、自由曲面和施工级节点深化。</p></aside>
+      </div>
+    </section>
+
+    <section id="install" class="section alt"><div class="container guide-layout"><div class="guide-index reveal"><span>01</span><h2>安装插件</h2><p>普通用户不需要安装 Add-In Manager，按部署包结构放置文件后重启 Revit 2024 即可。</p></div><div class="guide-card reveal"><h3>文件放置位置</h3><pre><code>C:\ProgramData\Autodesk\Revit\Addins\2024\
+  Revit-CW-plugin.addin
+  Revit-CW-plugin\
+    RevitCurtainWallPlugin.dll
+    library\
+      manifest.json
+      families\
+      templates\</code></pre><ul><li><code>Revit-CW-plugin.addin</code> 放在 Revit 2024 Addins 根目录。</li><li><code>RevitCurtainWallPlugin.dll</code> 放在 <code>Revit-CW-plugin</code> 文件夹内。</li><li><code>library</code> 文件夹和 DLL 保持同一级，用于读取素材、族库和模板。</li><li>重新打开 Revit 2024 后，在 <code>附加模块 / Add-Ins</code> 中运行 <code>幕墙快速建模</code>。</li></ul></div></div></section>
+
+    <section id="objects" class="section"><div class="container guide-layout"><div class="guide-index reveal"><span>02</span><h2>支持对象与外侧方向</h2><p>启动命令后，先选择输入对象，再点选幕墙外侧方向，确保预览左右方向正确。</p></div><div class="guide-grid three"><article class="guide-card reveal"><h3>直线模型线</h3><p>用于新建幕墙，适合从设计控制线快速生成标准幕墙。</p></article><article class="guide-card reveal"><h3>普通直线墙</h3><p>用于将既有普通墙替换成幕墙，便于方案阶段快速转换。</p></article><article class="guide-card reveal"><h3>既有直线幕墙</h3><p>用于读取当前分格后继续编辑，适合已有幕墙的二次调整。</p></article></div></div></section>
+
+    <section id="preview" class="section alt"><div class="container guide-layout"><div class="guide-index reveal"><span>03</span><h2>预览界面</h2><p>外侧方向确认后，插件会打开预览主界面。先在这里完成参数、模板、资源和生成动作。</p></div><div class="guide-card reveal"><h3>顶部参数</h3><div class="chip-list"><span>幕墙类型</span><span>底部标高</span><span>幕墙高度</span><span>预览宽度</span><span>当前构件类型</span></div><h3>底部按钮</h3><div class="button-map"><div><strong>模板</strong><p>选择已有幕墙方案作为起点。</p></div><div><strong>素材库</strong><p>查看当前可用资源。</p></div><div><strong>读取预设</strong><p>读取外部 JSON 方案。</p></div><div><strong>保存预设</strong><p>保存当前方案为 JSON。</p></div><div><strong>保存模板</strong><p>保存为当前项目内可复用模板。</p></div><div><strong>生成</strong><p>按当前预览生成或更新幕墙。</p></div></div></div></div></section>
+
+    <section id="edit" class="section"><div class="container"><div class="section-heading reveal"><p class="eyebrow">04 · Edit Workflow</p><h2>先选择构件类型，再在预览中编辑网格、尺寸、龙骨、边框和嵌板。</h2></div><div class="guide-grid"><article class="guide-card reveal"><h3>选择构件类型</h3><p>可选 <code>竖向内龙骨</code>、<code>横向内龙骨</code>、<code>竖向边框</code>、<code>横向边框</code>、<code>嵌板</code>。当前类型以外的构件会灰显且不能被选中。</p></article><article class="guide-card reveal"><h3>编辑网格</h3><p>双击预览区域添加网格，点击选中，拖动调整位置，按 Delete 或 Backspace 删除。支持 Ctrl 加选、Shift 减选、框选、滚轮缩放和中键平移。</p></article><article class="guide-card reveal"><h3>编辑尺寸</h3><p>选中网格线后，双击两侧尺寸标注，输入新尺寸并按 Enter。插件会移动当前选中的网格线，并保持边框不动。</p></article><article class="guide-card reveal"><h3>设置龙骨和边框</h3><p>双击网格线或边框标签，从下拉菜单选择龙骨类型；多选同方向网格后，可双击其中一个标签批量设置。边框可选择 <code>无</code>。</p></article><article class="guide-card reveal"><h3>设置嵌板</h3><p>点击或框选嵌板区域，双击嵌板标签选择类型；多选后双击其中一个标签可批量设置。嵌板选择 <code>空</code> 表示无面板状态。</p></article><article class="guide-card reveal"><h3>模板和预设</h3><p><code>模板</code> 用于项目内复用，<code>保存预设</code> 导出 JSON，适合跨项目或跨电脑传递方案，<code>读取预设</code> 可恢复历史方案。</p></article></div></div></section>
+
+    <section id="generate" class="section alt"><div class="container guide-layout"><div class="guide-index reveal"><span>05</span><h2>生成幕墙</h2><p>确认预览无误后点击 <code>生成</code>。插件会根据最初选择的对象决定创建、替换或更新。</p></div><div class="guide-card reveal"><div class="result-grid"><div><strong>选择线</strong><p>创建新的幕墙。</p></div><div><strong>选择普通墙</strong><p>将该墙替换为幕墙。</p></div><div><strong>选择既有幕墙</strong><p>更新当前幕墙。</p></div></div><h3>生成结果示例</h3><pre><code>生成完成
+幕墙 ID：123456
+网格：6/6
+嵌板：12/12
+龙骨：8/10</code></pre><p>结果中的数量表示 <strong>成功数量 / 尝试数量</strong>。如果比例不是满的，需要检查当前项目中的族类型是否适用于幕墙网格、边框或嵌板。</p></div></div></section>
+
+    <section id="faq" class="section"><div class="container"><div class="section-heading reveal"><p class="eyebrow">06 · FAQ</p><h2>常见问题</h2></div><div class="faq-list"><article class="guide-card reveal"><h3>没有看到插件命令</h3><p>确认 <code>.addin</code> 文件是否放在 <code>C:\ProgramData\Autodesk\Revit\Addins\2024</code>，DLL 是否放在 <code>Revit-CW-plugin</code> 文件夹内，然后重启 Revit 2024。</p></article><article class="guide-card reveal"><h3>没有幕墙类型可选</h3><p>当前 Revit 项目中需要先有可用的幕墙类型。</p></article><article class="guide-card reveal"><h3>没有龙骨或嵌板可选</h3><p>当前 Revit 项目中需要先载入对应的竖梃、横梃、边框或嵌板类型。</p></article><article class="guide-card reveal"><h3>既有墙高度没有变化</h3><p>如果墙体受顶部约束控制，高度可能不能由插件直接改写。可先在 Revit 中解除顶部约束，或用线重新生成幕墙。</p></article></div></div></section>
+
+    <section class="section summary-section"><div class="container summary-card reveal"><p class="eyebrow">07 · Scope</p><h2>适合标准直线幕墙的快速建模，不适合曲面幕墙、双曲面板和施工级节点建模。</h2><p>推荐用于方案阶段快速分格、普通墙快速替换为幕墙、既有直线幕墙继续调整，以及多面相似幕墙的快速建模。</p></div></section>
+  </main>
+
+  <footer class="site-footer unified-footer">
+    <div class="footer-container">
+      <div class="footer-brand"><span>上海建筑设计研究院有限公司 x 上海开诚建设工程咨询有限公司</span><strong>上海院 x 吴宗谚</strong></div>
+      <div class="footer-signature" aria-label="个人签名描述"><span class="signature-icon">◆</span><em>专注于AI应用、定制开发、与建设行业数字化转型</em></div>
+      <div class="footer-contact" aria-label="联系方式"><a href="mailto:thomaswu16@163.com">Email: thomaswu16@163.com</a><a href="tel:13162253301">Tel: 13162253301</a></div>
+      <div class="footer-links"><a href="#top">返回顶部</a></div>
+    </div>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
