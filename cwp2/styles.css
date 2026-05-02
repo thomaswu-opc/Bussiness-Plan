@@ -23,7 +23,7 @@ html {
 
 body {
   margin: 0;
-  font-family: "Segoe UI", "Microsoft YaHei", sans-serif;
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
   line-height: 1.75;
   color: var(--ink);
   background:

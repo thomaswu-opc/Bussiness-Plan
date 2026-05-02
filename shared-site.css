@@ -1,4 +1,8 @@
 /* Shared site chrome for report pages */
+body {
+  font-family: "Microsoft YaHei", "PingFang SC", "Segoe UI", sans-serif;
+}
+
 :root {
   --site-ink: #17202a;
   --site-muted: #65717f;
