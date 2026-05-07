@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Revit 设置步骤｜CAD-Revit 映射配置说明</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="../shared-site.css" />
+</head>
+<body>
+  <header class="site-header unified-header" aria-label="页面导航">
+    <div class="header-container">
+      <a class="site-brand" href="./index.html" aria-label="返回 Part 2 主页"><span class="brand-line">上海建筑设计研究院有限公司</span><span class="brand-separator"> x </span><span class="brand-line">上海开诚建设工程咨询有限公司</span></a>
+      <button class="nav-toggle" type="button" aria-label="展开导航" aria-expanded="false">菜单</button>
+      <nav class="site-nav nav-links" aria-label="Revit 设置步骤导航">
+        <a href="#prep">准备</a>
+        <a href="#lineweights">线宽</a>
+        <a href="#import">导入</a>
+        <a href="#visibility">显示</a>
+        <a href="#hatch">填充</a>
+        <a href="#check">校核</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero setup-hero">
+      <div class="container hero-grid setup-hero-grid">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Part 2 · Revit Setup</p>
+          <h1>CAD-Revit 映射的 Revit 设置步骤</h1>
+          <p class="hero-lead">
+            这份说明把映射表里的 CAD 图层、线型、线宽、填充、标注信息，落到 Revit 的导入线宽、对象样式、VV/VG、导入类别与填充策略中，方便驻场支持时按步骤配置和复核。
+          </p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#steps">开始设置</a>
+            <a class="btn secondary" href="./index.html">返回 Part 2</a>
+          </div>
+        </div>
+
+        <aside class="hero-panel setup-panel reveal" aria-label="Revit 设置路径示意">
+          <div class="panel-title">推荐配置顺序</div>
+          <div class="setup-flow-diagram" aria-hidden="true">
+            <span>Excel Mapping</span>
+            <b>→</b>
+            <span>Import Line Weights</span>
+            <b>→</b>
+            <span>Object Styles / VV-VG</span>
+            <b>→</b>
+            <span>Print Check</span>
+          </div>
+          <ol class="mini-flow compact">
+            <li><span>01</span> 先冻结 CAD 图层、线型、线宽命名</li>
+            <li><span>02</span> 再配置 Revit 导入线宽和导入类别</li>
+            <li><span>03</span> 最后用视图样板和打印结果复核</li>
+          </ol>
+        </aside>
+      </div>
+    </section>
+
+    <section id="prep" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">01 · Before Revit</p>
+          <h2>进入 Revit 前先锁定映射表</h2>
+          <p>本地模板中的“总映射表”是主控表，“CAD资源字典、Revit样式字典、标注注释字典”是标准名称来源。建议先完成字段闭环，再打开 Revit 配置。</p>
+        </div>
+
+        <div class="setup-grid four">
+          <article class="setup-card reveal">
+            <span class="tag">CAD</span>
+            <h3>CAD资源字典</h3>
+            <p>登记 CAD 图层、图层用途、线型、线宽、颜色/色号、打印样式、块/样式名和适用图纸。</p>
+          </article>
+          <article class="setup-card reveal">
+            <span class="tag">Revit</span>
+            <h3>Revit样式字典</h3>
+            <p>登记对象样式、子类别、线样式、线宽、材质/填充、视图样板和导入的图元样式。</p>
+          </article>
+          <article class="setup-card reveal">
+            <span class="tag">Anno</span>
+            <h3>标注注释字典</h3>
+            <p>统一标注类型、注释类型、字体、文字高度、颜色、标注线、标头/箭头和引线端点。</p>
+          </article>
+          <article class="setup-card reveal">
+            <span class="tag">Map</span>
+            <h3>总映射表</h3>
+            <p>逐行确认映射编号、应用场景、CAD表达、Revit显示控制、映射类型、优先级、状态与来源依据。</p>
+          </article>
+        </div>
+
+        <div class="table-wrap reveal" aria-label="映射表字段摘要">
+          <table class="setup-table">
+            <thead>
+              <tr>
+                <th>映射表字段</th>
+                <th>进入 Revit 后对应设置</th>
+                <th>核对重点</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>CAD图层 / 线型 / 线宽 / 颜色</td>
+                <td>导入线宽、对象样式、导入的图元样式、VV/VG 导入类别</td>
+                <td>线宽号、打印粗细、颜色是否被视图覆盖</td>
+              </tr>
+              <tr>
+                <td>填充 / 图案</td>
+                <td>Revit 填充图案、填充区域、导入图元显示</td>
+                <td>是否需要跟随视口比例联动</td>
+              </tr>
+              <tr>
+                <td>标注类型 / 字体 / 文字高度 / 标头</td>
+                <td>标注样式、文字样式、箭头样式、视图比例</td>
+                <td>出图比例下是否与 CAD 标准一致</td>
+              </tr>
+              <tr>
+                <td>映射类型 / 优先级 / 状态</td>
+                <td>配置优先顺序与待确认清单</td>
+                <td>高优先级先配置，待定项不得进入模板固化</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="steps" class="section alt">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">02 · Setup Steps</p>
+          <h2>Revit 内部设置步骤</h2>
+          <p>以下步骤按“项目通用设置 → 单次导入设置 → 视图显示控制 → 二维资源沉淀”组织，适合用于幕墙二维表达标准化试点。</p>
+        </div>
+
+        <div class="setup-timeline">
+          <article id="lineweights" class="setup-step reveal">
+            <span class="step-index">STEP 1</span>
+            <h3>配置导入线宽：Insert → Import panel → Import Line Weights</h3>
+            <p>根据 Autodesk 官方说明，DWG/DXF 导入时每个图层会依据 CAD 的 pen number-line weight 设置映射到 Revit 线宽。先按映射表把 CAD 线宽归并到 Revit 线宽号，再保存为项目可复用的导入线宽配置。</p>
+            <ul>
+              <li>从映射表提取 CAD 线宽、颜色/色号、打印样式，避免只按颜色判断线宽。</li>
+              <li>优先配置高频线宽，例如 0.18、0.25、0.35、0.50 等项目常用级别。</li>
+              <li>保存配置文件，作为项目样板或试点模板的一部分。</li>
+            </ul>
+          </article>
+
+          <article id="import" class="setup-step reveal">
+            <span class="step-index">STEP 2</span>
+            <h3>导入 DWG：Insert → Import CAD</h3>
+            <p>导入时确认 Current View Only、颜色、图层、单位和定位。对于二维详图资源，通常建议在目标详图视图或绘图视图内导入，减少 DWG 在非目标视图中扩散。</p>
+            <ul>
+              <li>二维表达建议勾选 Current View Only，让导入内容只服务当前视图。</li>
+              <li>Import Units 不确定时不要长期依赖 Auto-Detect，先用 CAD 标注尺寸复核。</li>
+              <li>定位方式保持一致，避免不同批次导入产生偏移。</li>
+            </ul>
+          </article>
+
+          <article class="setup-step reveal">
+            <span class="step-index">STEP 3</span>
+            <h3>设置对象样式：Manage → Object Styles → Imported Objects</h3>
+            <p>DWG 导入后，Revit 会按导入类别和子类别显示 CAD 图层。把映射表中的 Revit 对象样式、导入的图元样式、线样式/线宽逐项落实到 Imported Objects，形成底层默认显示规则。</p>
+            <ul>
+              <li>按 CAD 图层名称核对 Revit 中出现的导入子类别。</li>
+              <li>把“线样式/线宽”字段落实到 Revit 线样式和线宽号。</li>
+              <li>不要在单个视图里随手覆盖底层对象样式，否则后续难以追踪。</li>
+            </ul>
+          </article>
+
+          <article id="visibility" class="setup-step reveal">
+            <span class="step-index">STEP 4</span>
+            <h3>控制视图显示：VV/VG → Imported Categories</h3>
+            <p>Autodesk 官方文档说明，Visibility/Graphics 的 Imported Categories 可以控制导入或链接 CAD 文件中各图层的显示。这里适合处理“某张图要不要显示某类 CAD 图层”的视图级控制。</p>
+            <ul>
+              <li>展开 DWG 文件名，逐层核对图层显示状态。</li>
+              <li>只把视图相关的开关放在 VV/VG；项目通用样式仍应回到 Object Styles。</li>
+              <li>把成熟组合固化为视图样板，避免每张图重复配置。</li>
+            </ul>
+          </article>
+
+          <article id="hatch" class="setup-step reveal">
+            <span class="step-index">STEP 5</span>
+            <h3>处理 Hatch 与填充比例</h3>
+            <p>如果填充样式不需要跟随视口比例变动，可以在 CAD 中炸开成为线段，增加在 Revit 里显示的稳定性；如果需要与视口比例联动，则需在 Revit 中配置填充图案和填充区域的映射关系。</p>
+            <ul>
+              <li>非比例联动填充：CAD 端先炸开 Hatch，再导入 Revit 校核显示。</li>
+              <li>比例联动填充：在 Revit 中建立对应填充图案，映射到填充区域或资源族表达。</li>
+              <li>复杂 Hatch 不建议直接作为黑箱导入后固化，先做小样验证。</li>
+            </ul>
+          </article>
+
+          <article class="setup-step reveal">
+            <span class="step-index">STEP 6</span>
+            <h3>按需 Explode 并整理为二维资源</h3>
+            <p>Autodesk 官方文档区分 Partial Explode 与 Full Explode，并提示链接文件不能 explode，且导入符号超过一定元素数量时不能 explode。实操中建议只对确实需要编辑、沉淀的部分进行分级处理。</p>
+            <ul>
+              <li>优先尝试 Partial Explode，保留可控层级。</li>
+              <li>Full Explode 只用于需要转成 Revit 线、文字、填充区域的最终资源。</li>
+              <li>爆炸后立刻整理为组、详图项目族或可复用资源，不保留散乱图元。</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="check" class="section">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">03 · Check List</p>
+          <h2>导入后的复核清单</h2>
+          <p>Revit 设置完成后，不以“屏幕看起来差不多”为验收标准，而以映射表、视图样板和打印结果共同确认。</p>
+        </div>
+
+        <div class="check-grid">
+          <article class="check-card reveal">
+            <h3>显示复核</h3>
+            <ul>
+              <li>CAD 图层是否能在 Imported Categories 中找到。</li>
+              <li>线型、颜色、线宽是否与映射表一致。</li>
+              <li>是否存在被视图覆盖导致的临时显示差异。</li>
+            </ul>
+          </article>
+          <article class="check-card reveal">
+            <h3>比例复核</h3>
+            <ul>
+              <li>1:20、1:50、1:100 等典型比例下线宽是否可读。</li>
+              <li>Hatch 是否需要跟随视口比例变化。</li>
+              <li>文字高度、箭头、标注线是否满足出图习惯。</li>
+            </ul>
+          </article>
+          <article class="check-card reveal">
+            <h3>资源复核</h3>
+            <ul>
+              <li>可复用内容是否已归入详图项目族、组或资源库。</li>
+              <li>参数化项是否已在映射表中标记可参变。</li>
+              <li>待定和待确认项是否禁止进入正式模板。</li>
+            </ul>
+          </article>
+        </div>
+
+        <div class="setup-note reveal">
+          <strong>推荐原则</strong>
+          <p>Object Styles 管底层默认，VV/VG 管当前视图，View Template 管批量复用，Mapping Table 管追溯依据。四者分工清楚，后续维护成本才会低。</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <div class="section-heading reveal">
+          <p class="eyebrow">04 · References</p>
+          <h2>公开资料参考</h2>
+          <p>以下为本页整理时参考的 Autodesk 官方说明，用于校准 Revit 的导入、线宽、可见性与爆炸逻辑。</p>
+        </div>
+        <div class="reference-list reveal">
+          <a href="https://help.autodesk.com/cloudhelp/2024/ENU/Revit-Model/files/GUID-D184A004-D0BF-44D1-9C02-99480B129CAD.htm" target="_blank" rel="noopener">Autodesk：Import and Link Options</a>
+          <a href="https://help.autodesk.com/cloudhelp/2015/ENU/Revit-Model/files/GUID-C0ECE0FB-A2CF-4CFD-A72A-191389FAA18D.htm" target="_blank" rel="noopener">Autodesk：Define Line Weights for Imported DWG or DXF Files</a>
+          <a href="https://help.autodesk.com/cloudhelp/2026/ENU/RevitLT-DocumentPresent/files/GUID-87A17889-83BA-4C8F-A6B4-9A47B0869015.htm" target="_blank" rel="noopener">Autodesk：Visibility/Graphics Imported Categories</a>
+          <a href="https://help.autodesk.com/cloudhelp/2023/ENU/Revit-Model/files/GUID-F2D2B53E-187A-446D-8316-D7C2C35048E1.htm" target="_blank" rel="noopener">Autodesk：Explode Imported Geometry</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer unified-footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <span>上海建筑设计研究院有限公司 x 上海开诚建设工程咨询有限公司</span>
+        <strong>上海院 x 吴宗谚</strong>
+      </div>
+      <div class="footer-signature" aria-label="个人签名描述">
+        <span class="signature-icon">◆</span>
+        <em>专注于AI应用、定制开发、与建设行业数字化转型</em>
+      </div>
+      <div class="footer-contact" aria-label="联系方式">
+        <a href="mailto:thomaswu16@163.com">Email: thomaswu16@163.com</a>
+        <a href="tel:13162253301">Tel: 13162253301</a>
+      </div>
+      <div class="footer-links">
+        <a href="./index.html">返回 Part 2</a>
+        <a href="#top">返回顶部</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
